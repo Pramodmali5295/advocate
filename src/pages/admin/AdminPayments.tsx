@@ -141,21 +141,23 @@ const AdminPayments = () => {
       </div>
 
       {/* Payments Table */}
-      <div className="admin-card overflow-hidden">
-        <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-          Payment History
-        </h3>
+      <div className="admin-card !p-0 overflow-hidden">
+        <div className="p-6 pb-0">
+          <h3 className="font-display text-lg font-semibold text-foreground mb-4">
+            Payment History
+          </h3>
+        </div>
 
         <div className="overflow-x-auto">
-          <table className="w-full">
+          <table className="w-full min-w-[1000px]">
             <thead>
               <tr className="table-header">
-                <th className="text-left py-3 px-4 rounded-l-lg">Payment ID</th>
-                <th className="text-left py-3 px-4">Client</th>
-                <th className="text-left py-3 px-4">Consultation</th>
-                <th className="text-left py-3 px-4">Date & Time</th>
-                <th className="text-left py-3 px-4">Status</th>
-                <th className="text-right py-3 px-4 rounded-r-lg">Amount</th>
+                <th className="text-left py-3 px-4 rounded-l-lg whitespace-nowrap">Payment ID</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Client</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Consultation</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Date & Time</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Status</th>
+                <th className="text-right py-3 px-4 rounded-r-lg whitespace-nowrap">Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -163,7 +165,7 @@ const AdminPayments = () => {
                 const StatusIcon = statusConfig[payment.status as keyof typeof statusConfig].icon;
                 return (
                   <tr key={payment.id} className="table-row">
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 whitespace-nowrap">
                       <div>
                         <span className="font-mono text-sm text-foreground block">
                           {payment.id}
@@ -173,15 +175,15 @@ const AdminPayments = () => {
                         </span>
                       </div>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 whitespace-nowrap">
                       <span className="font-medium text-foreground">{payment.clientName}</span>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 whitespace-nowrap">
                       <span className="font-mono text-sm text-muted-foreground">
                         {payment.inquiryId}
                       </span>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 whitespace-nowrap">
                       <span className="text-muted-foreground">
                         {new Date(payment.date).toLocaleDateString('en-IN', {
                           day: 'numeric',
@@ -197,7 +199,7 @@ const AdminPayments = () => {
                         </span>
                       </span>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="py-4 px-4 whitespace-nowrap">
                       <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
                         statusConfig[payment.status as keyof typeof statusConfig].className
                       }`}>
@@ -205,7 +207,7 @@ const AdminPayments = () => {
                         {payment.status}
                       </span>
                     </td>
-                    <td className="py-4 px-4 text-right">
+                    <td className="py-4 px-4 text-right whitespace-nowrap">
                       <span className="font-semibold text-foreground">₹{payment.amount}</span>
                     </td>
                   </tr>

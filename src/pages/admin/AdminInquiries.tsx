@@ -118,38 +118,38 @@ const AdminInquiries = () => {
       </div>
 
       {/* Consultations Table */}
-      <div className="admin-card overflow-hidden">
+      <div className="admin-card !p-0 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[800px]">
+          <table className="w-full min-w-[1000px]">
             <thead>
               <tr className="table-header">
-                <th className="text-left py-3 px-4 rounded-l-lg">Sr No</th>
-                <th className="text-left py-3 px-4">Client</th>
-                <th className="text-left py-3 px-4">Category</th>
-                <th className="text-left py-3 px-4">Date</th>
-                <th className="text-left py-3 px-4">Status</th>
-                <th className="text-right py-3 px-4">Amount</th>
-                <th className="text-right py-3 px-4 rounded-r-lg">Actions</th>
+                <th className="text-left py-3 px-4 rounded-l-lg whitespace-nowrap">Sr No</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Client</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Category</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Date</th>
+                <th className="text-left py-3 px-4 whitespace-nowrap">Status</th>
+                <th className="text-right py-3 px-4 whitespace-nowrap">Amount</th>
+                <th className="text-right py-3 px-4 rounded-r-lg whitespace-nowrap">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredInquiries.map((inquiry, index) => (
                 <tr key={inquiry.id} className="table-row">
-                  <td className="py-4 px-4">
+                  <td className="py-4 px-4 whitespace-nowrap">
                     <span className="font-medium text-sm text-muted-foreground">
                       {inquiries.findIndex(i => i.id === inquiry.id) + 1}
                     </span>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-4 px-4 whitespace-nowrap">
                     <div>
                       <span className="font-medium text-foreground block">{inquiry.fullName}</span>
                       <span className="text-sm text-muted-foreground">{inquiry.email}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-4 px-4 whitespace-nowrap">
                     <span className="text-muted-foreground">{inquiry.category}</span>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-4 px-4 whitespace-nowrap">
                     <span className="text-muted-foreground">
                       {inquiry.createdAt ? (inquiry.createdAt as any).toDate().toLocaleDateString('en-IN', {
                         day: 'numeric',
@@ -158,15 +158,15 @@ const AdminInquiries = () => {
                       }) : 'Pending...'}
                     </span>
                   </td>
-                  <td className="py-4 px-4">
+                  <td className="py-4 px-4 whitespace-nowrap">
                     <span className={statusConfig[inquiry.status as keyof typeof statusConfig].className}>
                       {statusConfig[inquiry.status as keyof typeof statusConfig]?.label || inquiry.status}
                     </span>
                   </td>
-                  <td className="py-4 px-4 text-right">
+                  <td className="py-4 px-4 text-right whitespace-nowrap">
                     <span className="font-medium text-foreground">₹{inquiry.amount}</span>
                   </td>
-                  <td className="py-4 px-4 text-right">
+                  <td className="py-4 px-4 text-right whitespace-nowrap">
                     <Button
                       variant="ghost"
                       size="sm"

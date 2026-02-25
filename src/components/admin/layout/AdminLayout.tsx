@@ -182,7 +182,7 @@ export const AdminLayout = () => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div className="flex-1 flex flex-col min-h-screen min-w-0 overflow-x-hidden">
         {/* Top Bar */}
         <header className="bg-card/80 backdrop-blur-md border-b border-border px-6 py-4 sticky top-0 z-30">
           <div className="flex items-center justify-between">
@@ -228,7 +228,7 @@ export const AdminLayout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 p-4 md:p-6 min-w-0">
           <Outlet />
         </main>
       </div>

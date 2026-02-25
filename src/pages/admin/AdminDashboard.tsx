@@ -114,8 +114,8 @@ const AdminDashboard = () => {
 
       <div className="grid lg:grid-cols-3 gap-8">
         {/* Recent Inquiries */}
-        <div className="lg:col-span-2 admin-card">
-          <div className="flex items-center justify-between mb-6">
+        <div className="lg:col-span-2 admin-card !p-0 overflow-hidden flex flex-col">
+          <div className="p-6 flex items-center justify-between">
             <h2 className="font-display text-xl font-semibold text-foreground">
               Recent Consultations
             </h2>
@@ -128,14 +128,14 @@ const AdminDashboard = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px]">
+            <table className="w-full min-w-[700px]">
               <thead>
                 <tr className="table-header">
-                  <th className="text-left py-3 px-4 rounded-l-lg">Sr No</th>
-                  <th className="text-left py-3 px-4">Client</th>
-                  <th className="text-left py-3 px-4">Category</th>
-                  <th className="text-left py-3 px-4">Status</th>
-                  <th className="text-right py-3 px-4 rounded-r-lg">Amount</th>
+                  <th className="text-left py-3 px-4 rounded-l-lg whitespace-nowrap">Sr No</th>
+                  <th className="text-left py-3 px-4 whitespace-nowrap">Client</th>
+                  <th className="text-left py-3 px-4 whitespace-nowrap">Category</th>
+                  <th className="text-left py-3 px-4 whitespace-nowrap">Status</th>
+                  <th className="text-right py-3 px-4 rounded-r-lg whitespace-nowrap">Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -143,23 +143,23 @@ const AdminDashboard = () => {
                   const StatusIcon = statusConfig[inquiry.status as keyof typeof statusConfig]?.icon || AlertCircle;
                   return (
                     <tr key={inquiry.id} className="table-row">
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <span className="font-medium text-sm text-muted-foreground">
                           {inquiries.findIndex(i => i.id === inquiry.id) + 1}
                         </span>
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <span className="font-medium text-foreground">{inquiry.fullName}</span>
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <span className="text-muted-foreground">{inquiry.category}</span>
                       </td>
-                      <td className="py-4 px-4">
+                      <td className="py-4 px-4 whitespace-nowrap">
                         <span className={statusConfig[inquiry.status as keyof typeof statusConfig].className}>
                           {statusConfig[inquiry.status as keyof typeof statusConfig]?.label || inquiry.status}
                         </span>
                       </td>
-                      <td className="py-4 px-4 text-right">
+                      <td className="py-4 px-4 text-right whitespace-nowrap">
                         <span className="font-medium text-foreground">₹{inquiry.amount}</span>
                       </td>
                     </tr>

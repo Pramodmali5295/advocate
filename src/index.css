@@ -410,6 +410,7 @@ html {
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -419,8 +420,22 @@ html {
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--charcoal-light));
   border-radius: 4px;
+  border: 2px solid hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--charcoal));
+  background: hsl(var(--accent));
+}
+
+/* Specific styling for horizontal scrollbars to make them visible */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 10px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent) / 0.5);
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent));
 }

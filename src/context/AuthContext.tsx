@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   sendPasswordResetEmail,
+  updatePassword,
   User 
 } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -14,6 +15,7 @@ interface AuthContextType {
   login: (email: string, pass: string) => Promise<{ success: boolean; message: string }>;
   logout: () => Promise<void>;
   sendResetEmail: (email: string) => Promise<{ success: boolean; message: string }>;
+  changePassword: (email: string, oldPass: string, newPass: string) => Promise<{ success: boolean; message: string }>;
   isLoading: boolean;
 }
 
@@ -58,13 +60,30 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const changePassword = async (email: string, oldPass: string, newPass: string) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, oldPass);
+      if (userCredential.user) {
+        await updatePassword(userCredential.user, newPass);
+        return { success: true, message: "Password updated successfully! Please login with your new password." };
+      }
+      return { success: false, message: "Failed to verify credentials." };
+    } catch (error: any) {
+      console.error("Change password error:", error);
+      let message = "Failed to update password.";
+      if (error.code === 'auth/wrong-password') message = "Incorrect current password.";
+      return { success: false, message };
+    }
+  };
+
   return (
     <AuthContext.Provider value={{ 
       user, 
       isAuthenticated: !!user, 
       login, 
       logout, 
-      sendResetEmail, 
+      sendResetEmail,
+      changePassword,
       isLoading 
     }}>
       {children}

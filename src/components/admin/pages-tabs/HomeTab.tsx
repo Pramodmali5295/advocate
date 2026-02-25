@@ -48,6 +48,18 @@ export const HomeTab = () => {
           <textarea className="form-input min-h-[80px]" value={hero.subtitle} onChange={e => setHero({ ...hero, subtitle: e.target.value })} />
         </Field>
 
+        <Field
+          label="Hero Background Image URL"
+          hint="Paste a direct image link (e.g. from Unsplash) to show as the banner background. A dark professional library image is used by default to keep navigation clear."
+        >
+          <input 
+            className="form-input" 
+            placeholder="https://images.unsplash.com/..." 
+            value={hero.backgroundImage || ''} 
+            onChange={e => setHero({ ...hero, backgroundImage: e.target.value })} 
+          />
+        </Field>
+
         <div>
           <label className="form-label">Statistics Row (Cases Won / Years Experience / Success Rate…)</label>
           <p className="text-xs text-muted-foreground mb-2">These numbers appear at the bottom of the banner in a row of stat boxes.</p>

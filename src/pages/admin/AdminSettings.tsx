@@ -21,6 +21,15 @@ const AdminSettings = () => {
   }, [content.settings]);
 
   const handleSave = () => {
+    if (settings.phone.length !== 10) {
+      toast({
+        title: "Validation Error",
+        description: "Please enter a valid 10-digit phone number.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     updateSettings(settings);
     toast({
       title: "Settings Saved",
@@ -75,13 +84,22 @@ const AdminSettings = () => {
             />
           </div>
           <div>
-            <label className="form-label">Phone Number</label>
+            <label className="form-label">Phone Number (10 Digits)</label>
             <input
               type="tel"
               value={settings.phone}
-              onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
-              className="form-input"
+              onChange={(e) => {
+                const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                setSettings({ ...settings, phone: val });
+              }}
+              className={`form-input ${settings.phone.length > 0 && settings.phone.length < 10 ? 'border-destructive' : ''}`}
+              placeholder="Enter 10 digit number"
             />
+            {settings.phone.length > 0 && settings.phone.length < 10 && (
+              <p className="text-[10px] text-destructive mt-1 font-bold">
+                Must be exactly 10 digits
+              </p>
+            )}
           </div>
           <div className="sm:col-span-2">
             <label className="form-label">Office Address</label>
@@ -159,12 +177,14 @@ const AdminSettings = () => {
           <div>
             <label className="form-label">Consultation Fee (₹)</label>
             <input
-              type="number"
-              value={settings.inquiryFee}
-              onChange={(e) => setSettings({ ...settings, inquiryFee: parseInt(e.target.value) || 0 })}
+              type="text"
+              value={settings.inquiryFee === 0 ? '' : settings.inquiryFee}
+              onChange={(e) => {
+                const val = e.target.value.replace(/\D/g, '');
+                setSettings({ ...settings, inquiryFee: val === '' ? 0 : parseInt(val) });
+              }}
+              placeholder="0"
               className="form-input"
-              min="0"
-              max="99999"
             />
           </div>
           <div>

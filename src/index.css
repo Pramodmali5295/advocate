@@ -181,48 +181,57 @@
   }
 
   .container-legal {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-10 max-w-none;
+    @apply w-full mx-auto px-4 sm:px-6 lg:px-10 max-w-[1400px];
   }
 
   /* Typography */
   .heading-display {
     font-family: "Playfair Display", serif;
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
   }
 
   .heading-section {
     font-family: "Playfair Display", serif;
-    @apply text-3xl md:text-4xl font-semibold;
+    @apply text-2xl sm:text-3xl md:text-4xl font-semibold;
   }
 
   .heading-card {
     font-family: "Playfair Display", serif;
-    @apply text-xl md:text-2xl font-semibold;
+    @apply text-lg sm:text-xl md:text-2xl font-semibold;
   }
 
   .text-body {
-    @apply text-base md:text-lg leading-relaxed text-muted-foreground;
+    @apply text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground;
   }
 
   .text-small {
-    @apply text-sm text-muted-foreground;
+    @apply text-xs sm:text-sm text-muted-foreground;
+  }
+
+  /* Glassmorphism */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+
+  .glass-card-dark {
+    @apply bg-navy/40 backdrop-blur-md border border-white/10 shadow-xl;
   }
 
   /* Gold accent line */
   .accent-line {
-    @apply w-16 h-1 bg-accent rounded-full;
+    @apply w-12 sm:w-16 h-1 bg-accent rounded-full;
   }
 
   .accent-line-center {
-    @apply w-16 h-1 bg-accent rounded-full mx-auto;
+    @apply w-12 sm:w-16 h-1 bg-accent rounded-full mx-auto;
   }
 
   /* Hero overlay gradient */
   .hero-overlay {
     background: linear-gradient(
       135deg,
-      hsla(222, 47%, 11%, 0.95) 0%,
-      hsla(215, 25%, 27%, 0.9) 100%
+      hsla(222, 47%, 11%, 0.98) 0%,
+      hsla(215, 25%, 27%, 0.95) 100%
     );
   }
 

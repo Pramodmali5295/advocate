@@ -36,6 +36,7 @@ export const seedContent: SiteContent = {
     badge: 'LEGAL EXCELLENCE SINCE 2003',
     title: 'Precision in Law,\nResilience in Advocacy',
     subtitle: 'Your journey to justice begins with a strategic defense. We provide sophisticated legal solutions for complex challenges in Criminal, Civil, and Corporate law.',
+    backgroundImage: 'https://images.unsplash.com/photo-1589216532372-1c2a367900d9?auto=format&fit=crop&q=80&w=2670',
     stats: [
       { label: 'Cases Won', value: '2,500+' },
       { label: 'Years Experience', value: '20+' },

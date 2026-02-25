@@ -2,6 +2,7 @@ export interface HeroContent {
   badge: string;
   title: string;
   subtitle: string;
+  backgroundImage?: string;
   stats: { label: string; value: string }[];
 }
 

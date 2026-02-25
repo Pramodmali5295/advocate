@@ -1,4 +1,5 @@
 import { Layout } from '@/components/customer/layout/Layout';
+import { Link } from 'react-router-dom';
 import { Star, Quote, MapPin, CheckCircle2 } from 'lucide-react';
 import { useContent } from '@/context/ContentContext';
 
@@ -122,8 +123,8 @@ const TestimonialsPage = () => {
              Join hundreds of satisfied clients who have found justice and peace of mind with our expert representation.
            </p>
            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-             <a href="/contact" className="btn-gold px-10 py-4 text-lg">Book a Consultation</a>
-             <a href="/practice-areas" className="btn-outline px-10 py-4 text-lg">Explore Services</a>
+             <Link to="/inquiry" className="btn-gold px-10 py-4 text-lg">Book a Consultation</Link>
+             <Link to="/practice-areas" className="btn-outline border-2 border-accent text-accent hover:bg-accent/10 px-10 py-4 text-lg text-center transition-all">Explore Services</Link>
            </div>
         </div>
       </section>

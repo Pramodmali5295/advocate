@@ -25,6 +25,9 @@ import { ContentProvider } from "./context/ContentContext";
 import { AuthProvider } from "./context/AuthContext";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
 import Login from "./pages/admin/Login";
+import Privacy from "./pages/customer/Privacy";
+import Terms from "./pages/customer/Terms";
+import Disclaimer from "./pages/customer/Disclaimer";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +50,9 @@ const App = () => (
               <Route path="/inquiry" element={<Inquiry />} />
               <Route path="/knowledge" element={<Knowledge />} />
               <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
               
               {/* Admin Login */}
               <Route path="/admin/login" element={<Login />} />

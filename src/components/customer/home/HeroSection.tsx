@@ -31,26 +31,29 @@ export const HeroSection = () => {
     <section
       ref={heroRef}
       id="home"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-hero"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy"
     >
+      {/* ── Background Image ── */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `url('${hero.backgroundImage || 'https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&q=80&w=2670'}')`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {/* Deep Overlay for readability & professionalism */}
+        <div className="absolute inset-0 bg-navy/80 backdrop-blur-[1px]" />
+        {/* Subtle gradient for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/40 via-transparent to-navy/60" />
+      </div>
+
       {/* ── Decorative grid pattern ── */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.05] z-[1]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-
-      {/* ── Side gold accents ── */}
-      <div className="pointer-events-none absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-accent via-accent/40 to-transparent" />
-      <div className="pointer-events-none absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-transparent via-accent/40 to-accent" />
-
-      {/* ── Radial glow ── */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(212,165,55,0.08) 0%, transparent 70%)',
         }}
       />
 

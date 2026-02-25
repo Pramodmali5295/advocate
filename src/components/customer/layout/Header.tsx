@@ -58,7 +58,7 @@ export const Header = () => {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        isScrolled
+        (isScrolled || isMobileMenuOpen)
           ? 'bg-background/95 backdrop-blur-md shadow-md py-4 md:py-5'
           : 'bg-transparent py-6 md:py-10'
       )}
@@ -66,21 +66,21 @@ export const Header = () => {
       <div className="container-legal">
         <nav className="flex items-center h-full">
           {/* Logo - Left Corner */}
-          <div className="flex-1 flex justify-start">
-            <Link to="/" className="flex items-center gap-3 md:gap-4 group">
-              <div className="w-10 h-10 md:w-14 md:h-14 bg-accent rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
-                <Scale className="w-6 h-6 md:w-8 md:h-8 text-accent-foreground" />
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <Scale className="w-6 h-6 text-accent-foreground" />
               </div>
               <div className="flex flex-col">
                 <span className={cn(
-                  'font-display text-xl md:text-2xl lg:text-3xl font-bold tracking-tight transition-colors leading-none',
-                  isScrolled ? 'text-foreground' : 'text-white'
+                  'font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors leading-none',
+                  (isScrolled || isMobileMenuOpen) ? 'text-foreground' : 'text-white'
                 )}>
                   {settings.firmName.split(' ')[0]}
                 </span>
                 <span className={cn(
-                  'text-[10px] md:text-xs lg:text-sm tracking-[0.2em] uppercase transition-colors mt-1',
-                  isScrolled ? 'text-muted-foreground' : 'text-white/70'
+                  'text-[10px] sm:text-xs tracking-[0.2em] uppercase transition-colors mt-0.5',
+                  (isScrolled || isMobileMenuOpen) ? 'text-muted-foreground' : 'text-white/70'
                 )}>
                   {settings.firmName.split(' ').slice(1).join(' ')}
                 </span>
@@ -89,13 +89,13 @@ export const Header = () => {
           </div>
 
           {/* Center Navigation - Desktop Only */}
-          <div className="hidden lg:flex items-center justify-center gap-12">
+          <div className="hidden lg:flex flex-1 items-center justify-center gap-8 xl:gap-12">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  'text-base md:text-lg font-semibold transition-colors relative whitespace-nowrap',
+                  'text-base font-semibold transition-colors relative whitespace-nowrap',
                   isActive(link.path)
                     ? 'text-accent'
                     : isScrolled
@@ -111,7 +111,7 @@ export const Header = () => {
           </div>
 
           {/* Desktop & Mobile CTA - Right Corner */}
-          <div className="flex-1 flex items-center justify-end gap-3 md:gap-4">
+          <div className="flex items-center justify-end gap-2 sm:gap-4 flex-1">
             {/* Phone (Desktop Only) */}
             <div
               className={cn(
@@ -124,10 +124,10 @@ export const Header = () => {
             </div>
 
             {/* Inquiry Button - All Devices */}
-            <Link to="/inquiry" className="flex items-center">
+            <Link to="/inquiry" className="flex items-center shrink-0">
               <Button className={cn(
                 "btn-gold",
-                "h-10 md:h-14 px-4 md:px-8 text-sm md:text-base font-bold shadow-xl hover:scale-105 transition-all text-white"
+                "h-9 sm:h-12 px-3 sm:px-6 text-xs sm:text-sm font-bold shadow-xl hover:scale-105 transition-all text-white"
               )}>
                 <span className="hidden sm:inline">Book Consultation</span>
                 <span className="sm:hidden">Book Now</span>
@@ -139,7 +139,7 @@ export const Header = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
                 'lg:hidden p-2 transition-colors z-50 rounded-lg shrink-0',
-                isScrolled 
+                (isScrolled || isMobileMenuOpen)
                   ? 'text-foreground hover:bg-accent/10' 
                   : 'text-white hover:bg-white/10'
               )}

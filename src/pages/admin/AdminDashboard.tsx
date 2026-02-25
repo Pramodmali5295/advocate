@@ -88,14 +88,14 @@ const AdminDashboard = () => {
   return (
     <div className="space-y-8">
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat) => (
           <div key={stat.title} className="admin-stat-card">
             <div className="flex items-start justify-between mb-4">
-              <div className={`w-10 h-10 sm:w-12 sm:h-12 ${stat.bgColor} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                <stat.icon className={`w-5 h-5 sm:w-6 sm:h-6 ${stat.color}`} />
+              <div className={`w-12 h-12 ${stat.bgColor} rounded-lg flex items-center justify-center`}>
+                <stat.icon className={`w-6 h-6 ${stat.color}`} />
               </div>
-              <div className={`flex items-center gap-1 text-xs sm:text-sm font-medium ${
+              <div className={`flex items-center gap-1 text-sm font-medium ${
                 stat.changeType === 'up' ? 'text-green-600' : 'text-red-600'
               }`}>
                 {stat.changeType === 'up' ? (
@@ -106,8 +106,8 @@ const AdminDashboard = () => {
                 {stat.change}
               </div>
             </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-foreground truncate">{stat.value}</h3>
-            <p className="text-xs sm:text-sm text-muted-foreground truncate">{stat.title}</p>
+            <h3 className="text-2xl font-bold text-foreground">{stat.value}</h3>
+            <p className="text-sm text-muted-foreground">{stat.title}</p>
           </div>
         ))}
       </div>
@@ -128,7 +128,7 @@ const AdminDashboard = () => {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full">
+            <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="table-header">
                   <th className="text-left py-3 px-4 rounded-l-lg">Sr No</th>

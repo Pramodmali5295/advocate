@@ -265,12 +265,12 @@
 
   /* Admin Panel Styles */
   .admin-card {
-    @apply bg-card rounded-xl border border-border p-4 sm:p-6;
+    @apply bg-card rounded-xl border border-border p-6;
     box-shadow: var(--shadow-sm);
   }
 
   .admin-stat-card {
-    @apply bg-card rounded-xl border border-border p-4 sm:p-6 transition-all duration-200;
+    @apply bg-card rounded-xl border border-border p-6 transition-all duration-200;
     box-shadow: var(--shadow-sm);
   }
 

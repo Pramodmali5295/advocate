@@ -184,7 +184,7 @@ export const AdminLayout = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
         {/* Top Bar */}
-        <header className="bg-card/80 backdrop-blur-md border-b border-border px-4 sm:px-6 py-4 sticky top-0 z-30">
+        <header className="bg-card/80 backdrop-blur-md border-b border-border px-6 py-4 sticky top-0 z-30">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button 
@@ -228,7 +228,7 @@ export const AdminLayout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-4 sm:p-6">
+        <main className="flex-1 p-6">
           <Outlet />
         </main>
       </div>

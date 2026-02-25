@@ -111,12 +111,12 @@ export const Header = () => {
           </div>
 
           {/* Desktop & Mobile CTA - Right Corner */}
-          <div className="flex items-center justify-end gap-2 sm:gap-4 flex-1">
+          <div className="flex items-center justify-end gap-2 sm:gap-4 flex-1 h-full">
             {/* Phone (Desktop Only) */}
             <div
               className={cn(
                 'hidden xl:flex items-center gap-2 text-sm font-medium mr-2',
-                isScrolled ? 'text-foreground' : 'text-white'
+                (isScrolled || isMobileMenuOpen) ? 'text-foreground' : 'text-white'
               )}
             >
               <Phone className="w-4 h-4" />
@@ -134,85 +134,89 @@ export const Header = () => {
               </Button>
             </Link>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Ensure it's very accessible */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={cn(
-                'lg:hidden p-2 transition-colors z-50 rounded-lg shrink-0',
+                'lg:hidden flex items-center justify-center p-2 transition-all duration-300 z-[110] rounded-xl ml-1',
                 (isScrolled || isMobileMenuOpen)
                   ? 'text-foreground hover:bg-accent/10' 
                   : 'text-white hover:bg-white/10'
               )}
               aria-label="Toggle Menu"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? (
+                <X className="w-7 h-7" />
+              ) : (
+                <Menu className="w-7 h-7" />
+              )}
             </button>
           </div>
         </nav>
+      </div>
 
-        {/* Mobile Menu Overlay */}
-        <div className={cn(
-          'lg:hidden fixed inset-0 bg-background z-40 transition-all duration-500 ease-in-out transform',
-          isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-        )}>
-          {/* Decorative background elements for mobile menu */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-light/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-          
-          <div className="container-legal relative h-full flex flex-col pt-24 pb-12">
-            <nav className="flex-1 overflow-y-auto py-8">
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link, index) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className={cn(
-                      'group flex items-center justify-between py-6 text-3xl md:text-4xl font-display font-bold transition-all duration-300',
-                      isActive(link.path) ? 'text-accent pl-2' : 'text-foreground hover:text-accent pl-0 hover:pl-2',
-                      isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-                    )}
-                    style={{ transitionDelay: `${index * 100}ms` }}
-                  >
-                    <span>{link.name}</span>
-                    <div className={cn(
-                      'w-2 h-2 rounded-full bg-accent transition-all duration-300',
-                      isActive(link.path) ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                    )} />
-                  </Link>
-                ))}
-              </div>
-            </nav>
-            
-            <div className={cn(
-              "mt-auto pt-8 border-t border-border/50 space-y-8 transition-all duration-500 delay-500",
-              isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-            )}>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div
-                  className="flex items-center gap-4 text-foreground p-4 rounded-xl bg-muted/50"
+      {/* Mobile Menu Overlay - Drawer Style */}
+      <div className={cn(
+        'lg:hidden fixed left-0 right-0 top-0 bg-background transition-all duration-500 ease-in-out z-[100] overflow-hidden',
+        isMobileMenuOpen ? 'h-screen opacity-100' : 'h-0 opacity-0 pointer-events-none'
+      )}>
+        {/* Decorative background elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-light/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        
+        <div className="container-legal relative flex flex-col pt-20 pb-8">
+          <nav className="overflow-y-auto py-4">
+            <div className="flex flex-col gap-2">
+              {navLinks.map((link, index) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    'group flex items-center justify-between py-4 text-2xl md:text-3xl font-display font-semibold transition-all duration-300',
+                    isActive(link.path) ? 'text-accent pl-2' : 'text-foreground hover:text-accent pl-0 hover:pl-2',
+                    isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+                  )}
+                  style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Call Us Anytime</div>
-                    <span className="font-semibold">{settings.phone}</span>
-                  </div>
+                  <span>{link.name}</span>
+                  <div className={cn(
+                    'w-2 h-2 rounded-full bg-accent transition-all duration-300',
+                    isActive(link.path) ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
+                  )} />
+                </Link>
+              ))}
+            </div>
+          </nav>
+          
+          <div className={cn(
+            "mt-6 pt-6 border-t border-border/50 space-y-6 transition-all duration-500 delay-500",
+            isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+          )}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div
+                className="flex items-center gap-4 text-foreground p-4 rounded-xl bg-muted/50"
+              >
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Call Us Anytime</div>
+                  <span className="font-semibold">{settings.phone}</span>
                 </div>
               </div>
-              
-              <Link to="/inquiry" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="btn-gold w-full py-7 h-auto text-xl font-bold shadow-gold group">
-                  <span className="flex items-center gap-2">
-                    Book Consultation
-                    <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </Button>
-              </Link>
             </div>
+            
+            <Link to="/inquiry" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button className="btn-gold w-full py-7 h-auto text-xl font-bold shadow-gold group">
+                <span className="flex items-center gap-2">
+                  Book Consultation
+                  <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

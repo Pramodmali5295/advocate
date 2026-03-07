@@ -1,0 +1,456 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "practiceAreas": "Practice Areas",
+    "knowledgeBase": "Knowledge Base",
+    "contact": "Contact",
+    "inquiry": "Book Inquiry",
+    "testimonials": "Testimonials"
+  },
+  "hero": {
+    "badge": "LEGAL EXCELLENCE SINCE 2003",
+    "title": "Precision in Law,\nResilience in Advocacy",
+    "subtitle": "Your journey to justice begins with a strategic defense. We provide sophisticated legal solutions for complex challenges in Criminal, Civil, and Corporate law.",
+    "stats": {
+      "casesWon": "Cases Won",
+      "yearsExperience": "Years Experience", 
+      "successRate": "Success Rate"
+    }
+  },
+  "aboutSection": {
+    "badge": "About the Advocate",
+    "title": "Dedicated to Justice & Client Success",
+    "description": "With over two decades of experience in criminal, civil, and corporate law, Advocate Arun Kumar has built a reputation for unwavering dedication and exceptional results. His approach combines strategic thinking with a deep commitment to justice.",
+    "yearsOfExcellence": "Years of\nExcellence",
+    "highlights": {
+      "casesHandled": "Cases Handled",
+      "yearsExperience": "Years Experience",  
+      "successRate": "Success Rate",
+      "highCourts": "High Courts"
+    }
+  },
+  "cta": {
+    "title": "Ready to Get the Legal Help You Deserve?",
+    "subtitle": "Book a consultation today and get a detailed legal assessment of your case within 24 hours. Our team is ready to fight for your rights.",
+    "buttonText": "Book Consultation",
+    "features": {
+      "response24h": {
+        "title": "24-Hour Response",
+        "description": "Receive a detailed legal assessment within 24 hours of booking"
+      },
+      "confidential": {
+        "title": "Confidential", 
+        "description": "All consultations are completely confidential and secure"
+      },
+      "expertGuidance": {
+        "title": "Expert Guidance",
+        "description": "20+ years of expertise across all major areas of law"
+      }
+    }
+  },
+  "practiceAreas": {
+    "badge": "AREAS OF PRACTICE",
+    "heroTitle": "Comprehensive Legal Solutions Tailored for You",
+    "heroSubtitle": "Explore our specialized legal domains where deep technical knowledge meets relentless advocacy. We handle every case with the precision it demands.",
+    "viewAllAreas": "View All Practice Areas",
+    "cases": "Cases",
+    "learnMore": "Learn More",
+    "pageNotFound": "Practice Area Not Found",
+    "viewAll": "View All Practice Areas",
+    "servicesWeOffer": "Services We Offer",
+    "courtsAndTribunals": "Courts & Tribunals",
+    "needLegalAssistance": "Need Legal Assistance in",
+    "bookConsultationDesc": "Book a consultation and receive detailed legal guidance from our experienced team within 24 hours.",
+    "practiceStatistics": "Practice Statistics",
+    "casesHandled": "Cases Handled",
+    "successRate": "Success Rate",
+    "otherPracticeAreas": "Other Practice Areas",
+    "criminal": {
+      "title": "Criminal Law",
+      "description": "Expert defense in criminal matters with a proven track record of successful representations.",
+      "fullDescription": "Our criminal law practice offers comprehensive defense services for individuals facing criminal charges. With over 800 successful case resolutions, we bring decades of experience in navigating the complexities of criminal proceedings.",
+      "cases": "800+",
+      "successRate": "96%",
+      "services": [
+        "Bail Applications & Appeals",
+        "Criminal Trial Defense",
+        "White Collar Crime Defense",
+        "Cybercrime Cases",
+        "Appeals in Higher Courts",
+        "Anticipatory Bail",
+        "Quashing of FIRs",
+        "Criminal Writ Petitions"
+      ],
+      "courts": [
+        "Supreme Court of India",
+        "Delhi High Court",
+        "District & Sessions Courts",
+        "Magistrate Courts"
+      ]
+    },
+    "civil": {
+      "title": "Civil Litigation",
+      "description": "Strategic resolution of civil disputes with focus on client interests.",
+      "fullDescription": "We handle all aspects of civil litigation, from initial dispute assessment to trial and appeals. Our methodical approach ensures thorough preparation and effective advocacy for our clients.",
+      "cases": "600+",
+      "successRate": "94%",
+      "services": [
+        "Property Disputes",
+        "Recovery Suits",
+        "Declaratory Suits",
+        "Injunction Matters",
+        "Contract Disputes",
+        "Partition Suits",
+        "Civil Appeals",
+        "Execution Proceedings"
+      ],
+      "courts": [
+        "Civil Courts",
+        "District Courts",
+        "High Court",
+        "Consumer Forums"
+      ]
+    },
+    "family": {
+      "title": "Family Law",
+      "description": "Compassionate handling of sensitive family matters with discretion.",
+      "fullDescription": "Family legal matters require sensitivity, understanding, and discretion. Our family law practice provides compassionate counsel while vigorously protecting our clients rights and interests.",
+      "cases": "400+",
+      "successRate": "92%",
+      "services": [
+        "Divorce Proceedings",
+        "Child Custody & Visitation",
+        "Maintenance & Alimony",
+        "Domestic Violence Cases",
+        "Guardianship Matters",
+        "Adoption Legal Support",
+        "Marriage Registration",
+        "Pre-nuptial Agreements"
+      ],
+      "courts": [
+        "Family Courts",
+        "District Courts",
+        "High Court",
+        "Mediation Centers"
+      ]
+    },
+    "property": {
+      "title": "Property Law",
+      "description": "Comprehensive property legal services for individuals and businesses.",
+      "fullDescription": "Property transactions and disputes require meticulous attention to detail. Our property law practice covers all aspects of real estate legal matters, ensuring your property rights are protected.",
+      "cases": "350+",
+      "successRate": "95%",
+      "services": [
+        "Title Verification",
+        "Property Registration",
+        "Sale & Purchase Agreements",
+        "Lease Documentation",
+        "Property Disputes",
+        "Landlord-Tenant Matters",
+        "Development Agreements",
+        "RERA Compliance"
+      ],
+      "courts": [
+        "Civil Courts",
+        "Revenue Courts",
+        "High Court",
+        "RERA Authority"
+      ]
+    },
+    "corporate": {
+      "title": "Corporate Law",
+      "description": "Business legal solutions for startups, SMEs, and corporations.",
+      "fullDescription": "We provide comprehensive corporate legal services to businesses of all sizes. From company formation to complex commercial transactions, our team ensures your business operates within legal frameworks.",
+      "cases": "250+",
+      "successRate": "97%",
+      "services": [
+        "Company Registration",
+        "Contract Drafting & Review",
+        "Shareholder Agreements",
+        "Corporate Compliance",
+        "Mergers & Acquisitions",
+        "Intellectual Property",
+        "Employment Contracts",
+        "Commercial Litigation"
+      ],
+      "courts": [
+        "NCLT",
+        "High Court",
+        "Commercial Courts",
+        "Arbitration Tribunals"
+      ]
+    },
+    "consumer": {
+      "title": "Consumer Law",
+      "description": "Protection of consumer rights against unfair trade practices.",
+      "fullDescription": "When businesses fail to deliver on promises or engage in unfair practices, we stand with consumers. Our consumer law practice helps clients seek redressal and justice against corporate wrongdoing.",
+      "cases": "200+",
+      "successRate": "91%",
+      "services": [
+        "Consumer Complaints",
+        "Product Liability",
+        "Service Deficiency",
+        "Unfair Trade Practices",
+        "E-commerce Disputes",
+        "Banking Complaints",
+        "Insurance Claims",
+        "Medical Negligence"
+      ],
+      "courts": [
+        "District Consumer Forum",
+        "State Consumer Commission",
+        "National Consumer Commission",
+        "High Court"
+      ]
+    }
+  },
+  "testimonials": {
+    "badge": "SUCCESS STORIES",
+    "heroTitle": "The Voices of the People We Represent", 
+    "heroSubtitle": "Our legacy is built on the success of our clients. Explore honest reflections on our service from the individuals and businesses who have trusted us with their most critical legal matters.",
+    "reputationTitle": "Our Reputation Matters",
+    "reputationSubtitle": "Consistently rated excellent by clients across all practice areas.",
+    "verifiedReviews": "Verified Reviews",
+    "ctaTitle": "Ready to secure your legal success?",
+    "ctaSubtitle": "Join hundreds of satisfied clients who have found justice and peace of mind with our expert representation.",
+    "bookConsultation": "Book a Consultation",
+    "exploreServices": "Explore Services"
+  },
+  "contact": {
+    "badge": "GET IN TOUCH",
+    "heroTitle": "Connect with Legal Experts for Your Peace of Mind",
+    "heroSubtitle": "Whether you require urgent representation or a strategic consultation, our team is ready to provide the clarity and direction you need.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "hours": "Office Hours",
+    "officeLabel": "Office",
+    "location": "Location",
+    "howToReach": "How to Reach Us",
+    "directions": "Located near Civil Lines Metro Station (Yellow Line). Ample parking available in the building basement.",
+    "consultationTitle": "For Detailed Legal Consultation",
+    "consultationDesc": "General questions can be addressed via phone or email. For detailed legal consultation and case analysis, please book a consultation through our secure form."
+  },
+  "about": {
+    "badge": "OUR LEGACY",
+    "heroTitle": "A Personal Commitment to Upholding the Law",
+    "heroSubtitle": "For over 20 years, Advocate Law Chambers has served as a cornerstone of legal reliability. Led by Adv. Arun Kumar, we blend traditional legal wisdom with modern strategic thinking.",
+    "advocateName": "Adv. Arun Kumar",
+    "designation": "Senior Advocate – Supreme Court of India",
+    "education": "LLB, Delhi University",
+    "location": "New Delhi, India",
+    "practiceYears": "Practice Years",
+    "courtAppearances": "Court Appearances",
+    "clientSatisfaction": "Client Satisfaction",
+    "activeClients": "Active Clients",
+    "qualifications": "Qualifications & Credentials",
+    "experience": "Professional Experience",
+    "achievements": "Key Achievements",
+    "approach": "Our Approach",
+    "bio": [
+      "Advocate Arun Kumar is a distinguished legal professional with over two decades of experience in criminal defense, civil litigation, family law, and corporate legal matters. His career is marked by an unwavering commitment to justice and client success.",
+      "After completing his law degree from the prestigious Delhi University, he was enrolled with the Bar Council of Delhi in 2003. His early years were spent learning under senior advocates at leading law firms, where he developed a strong foundation in litigation strategy and courtroom advocacy.",
+      "In 2012, he established Advocate Law Chambers with a vision to provide accessible, high-quality legal services to individuals and businesses alike. The practice has since grown to handle cases across various courts, including the Supreme Court of India, High Courts, District Courts, and specialized tribunals."
+    ],
+    "certifications": [
+      "Bar Council of Delhi - Enrollment No. D/1234/2003",
+      "Supreme Court of India - AOR Designation",
+      "Certified Mediator - Delhi High Court Mediation Centre",
+      "Member - Delhi High Court Bar Association",
+      "Member - Supreme Court Bar Association"
+    ],
+    "timeline": [
+      {
+        "year": "2003",
+        "title": "Enrolled with Bar Council of Delhi",
+        "description": "Began legal practice after completing LLB from Delhi University"
+      },
+      {
+        "year": "2008",
+        "title": "Senior Associate at Leading Law Firm",
+        "description": "Handled complex criminal and civil litigation cases"
+      },
+      {
+        "year": "2012",
+        "title": "Established Independent Practice",
+        "description": "Founded Advocate Law Chambers with focus on client success"
+      },
+      {
+        "year": "2018",
+        "title": "Supreme Court Practice",
+        "description": "Designated to practice before the Supreme Court of India"
+      },
+      {
+        "year": "2023",
+        "title": "20 Years of Excellence",
+        "description": "Celebrating two decades of successful legal representation"
+      }
+    ],
+    "ethicsStatement": "We believe that the practice of law is a sacred responsibility. Every client who walks through our doors receives our complete attention, honest counsel, and vigorous representation. We never compromise on ethics, and we treat every case with the gravity it deserves."
+  },
+  "knowledge": {
+    "badge": "KNOWLEDGE CENTER",
+    "heroTitle": "Legal Insights & Resources",
+    "heroSubtitle": "Stay informed with our comprehensive legal guides, case studies, and expert analysis covering various areas of law.",
+    "searchPlaceholder": "Search articles...",
+    "categories": "Categories",
+    "allCategories": "All Categories",
+    "all": "All",
+    "criminalLaw": "Criminal Law",
+    "civilLaw": "Civil Litigation",
+    "familyLaw": "Family Law",
+    "propertyLaw": "Property Law",
+    "corporateLaw": "Corporate Law",
+    "consumerLaw": "Consumer Law",
+    "featuredArticles": "Featured Articles",
+    "allArticles": "All Articles",
+    "readMore": "Read More",
+    "publishedOn": "Published on",
+    "by": "by",
+    "relatedArticles": "Related Articles",
+    "noArticles": "No articles found matching your search.",
+    "loadMore": "Load More Articles",
+    "commonQuestions": "Common Questions",
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "ctaTitle": "Need Personalized Legal Advice?",
+    "ctaSubtitle": "Our knowledge base provides general information. For advice specific to your situation, book a consultation.",
+    "bookConsultation": "Book Consultation",
+    "articles": [
+      {
+        "id": 1,
+        "title": "Understanding Bail: A Complete Guide to Bail Provisions in India",
+        "excerpt": "Learn about different types of bail, anticipatory bail, and the legal procedures involved in securing bail in criminal cases.",
+        "content": "Bail is the release of a person from custody while they await trial or an appeal. In India, bail provisions are primarily governed by the Code of Criminal Procedure. There are three main types of bail: Regular Bail, Interim Bail, and Anticipatory Bail.",
+        "category": "Criminal Law",
+        "date": "2024-01-15",
+        "readTime": "8 min read",
+        "featured": true
+      },
+      {
+        "id": 2,
+        "title": "Property Registration Process: Step-by-Step Guide",
+        "excerpt": "A comprehensive guide to property registration in India, including required documents, stamp duty, and common pitfalls to avoid.",
+        "content": "Property registration in India is mandatory under the Registration Act. It involves multiple steps like valuation, payment of stamp duty, and final registration at the Sub-Registrar's office.",
+        "category": "Property Law",
+        "date": "2024-01-10",
+        "readTime": "6 min read",
+        "featured": true
+      },
+      {
+        "id": 3,
+        "title": "Divorce Proceedings Under Hindu Marriage Act",
+        "excerpt": "Understanding grounds for divorce, maintenance, custody, and the legal process for dissolving marriage under Hindu law.",
+        "content": "Divorce under the Hindu Marriage Act can be by mutual consent or on contested grounds. Common grounds include cruelty, desertion, adultery, and conversion.",
+        "category": "Family Law",
+        "date": "2024-01-05",
+        "readTime": "10 min read",
+        "featured": false
+      },
+      {
+        "id": 4,
+        "title": "Consumer Rights: Filing Complaints in Consumer Forum",
+        "excerpt": "Know your rights as a consumer and learn how to file effective complaints against deficient services or defective products.",
+        "content": "The Consumer Protection Act protects consumers from unfair trade practices. Complaints can be filed at District, State, or National levels depending on the value of the claim.",
+        "category": "Consumer Law",
+        "date": "2023-12-28",
+        "readTime": "5 min read",
+        "featured": false
+      },
+      {
+        "id": 5,
+        "title": "Starting a Company: Legal Requirements and Compliance",
+        "excerpt": "Essential legal requirements for company registration, director responsibilities, and ongoing compliance obligations.",
+        "content": "Starting a company in India requires registration with the Ministry of Corporate Affairs. Key steps include obtaining DSC, DIN, and filing for incorporation with MOA and AOA.",
+        "category": "Corporate Law",
+        "date": "2023-12-20",
+        "readTime": "7 min read",
+        "featured": false
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How do I know if I have a valid legal case?",
+        "answer": "Determining the validity of a legal case requires examining the facts against applicable laws. We recommend booking a consultation with your case details for a professional assessment."
+      },
+      {
+        "question": "What is the difference between civil and criminal cases?",
+        "answer": "Civil cases involve disputes between individuals or organizations (property, contracts, family matters), while criminal cases involve prosecution by the state for violations of criminal law."
+      },
+      {
+        "question": "How long do legal proceedings typically take?",
+        "answer": "The duration varies significantly based on case complexity, court backlog, and type of matter. Simple matters may resolve in months, while complex litigation can take years."
+      },
+      {
+        "question": "What documents should I keep ready for legal consultation?",
+        "answer": "Gather all relevant documents including agreements, correspondence, ID proofs, previous legal orders if any, and a chronological summary of events."
+      },
+      {
+        "question": "Can I change my lawyer during an ongoing case?",
+        "answer": "Yes, you have the right to change your legal counsel at any stage. However, it's important to ensure proper handover of case files and documents."
+      }
+    ]
+  },
+  "inquiry": {
+    "badge": "CONSULTATION PORTAL",
+    "heroTitle": "Secure Your Strategic Legal Assessment",
+    "heroSubtitle": "Take the first step toward a resolution. Submit your details for a prioritized legal review and receive a comprehensive professional opinion within 24 hours.",
+    "formTitle": "Case Details",
+    "formSubtitle": "Provide accurate information for a detailed legal assessment.",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "city": "City",
+    "caseCategory": "Case Category",
+    "selectCategory": "Select a category",
+    "caseDescription": "Case Description",
+    "describeCase": "Describe your case in detail...",
+    "submitInquiry": "Submit Inquiry",
+    "submitting": "Submitting...",
+    "required": "Required",
+    "consultationFee": "Consultation Fee",
+    "responseTime": "Response Time",
+    "withinHours": "Within 24 hours",
+    "confidentiality": "Complete Confidentiality",
+    "secureProcess": "Secure & Confidential Process",
+    "incompleteForm": "Please fill in all required fields.",
+    "successMessage": "Your consultation has been booked. We will contact you within 24 hours.",
+    "minimumCharacters": "Minimum 50 characters. Be as detailed as possible for accurate assessment.",
+    "oneTimeFee": "One-time consultation fee",
+    "inclusiveTaxes": "Inclusive of all taxes",
+    "payAndBook": "Pay {{currency}}{{fee}} & Book Consultation",
+    "securedBy": "Secured by Razorpay",
+    "dataEncrypted": "Your data is encrypted",
+    "whatYouReceive": "What You'll Receive",
+    "caseAnalysis": "Case Analysis",
+    "caseAnalysisDesc": "Thorough assessment of your legal matter",
+    "actionSteps": "Action Steps",
+    "actionStepsDesc": "Clear guidance on next steps",
+    "whyBookConsultation": "Why Book a Consultation?",
+    "whyBookDesc": "The nominal consultation fee ensures serious inquiries only, allowing us to dedicate time and expertise to provide you with meaningful, actionable legal guidance instead of generic responses.",
+    "note": "Note",
+    "noteDesc": "This is an initial consultation. If you decide to proceed with legal representation, the consultation fee will be adjusted against the engagement fee."
+  },
+  "common": {
+    "readMore": "Read More",
+    "readLess": "Read Less",
+    "learnMore": "Learn More",
+    "bookConsultation": "Book Consultation",
+    "getInTouch": "Get In Touch",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "pageNotFound": "Oops! Page not found",
+    "returnToHome": "Return to Home",
+    "other": "Other"
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "copyright": "All rights reserved.",
+    "adminLogin": "Admin Login",
+    "description": "Delivering excellence in legal representation with integrity, professionalism, and dedication to our clients' success for over two decades."
+  }
+}

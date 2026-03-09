@@ -26,12 +26,14 @@ import { AuthProvider } from "./context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
 import Login from "./pages/admin/Login";
+import InitialLanguagePopup from "./components/ui/InitialLanguagePopup";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
+      <InitialLanguagePopup />
       <ContentProvider>
         <AuthProvider>
           <TooltipProvider>

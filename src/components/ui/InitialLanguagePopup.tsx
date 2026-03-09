@@ -11,9 +11,7 @@ const InitialLanguagePopup: React.FC = () => {
 
   useEffect(() => {
     if (!hasSelectedLanguage) {
-      // Small delay to ensure smooth entry after page load
-      const timer = setTimeout(() => setIsVisible(true), 100);
-      return () => clearTimeout(timer);
+      setIsVisible(true);
     }
   }, [hasSelectedLanguage]);
 
@@ -50,7 +48,7 @@ const InitialLanguagePopup: React.FC = () => {
               type: "spring",
               damping: 25,
               stiffness: 300,
-              delay: 0.2 
+              delay: 0.1 
             }}
             className="relative w-full max-w-xl mx-4 overflow-hidden rounded-3xl border border-border bg-card shadow-2xl"
           >
@@ -59,7 +57,7 @@ const InitialLanguagePopup: React.FC = () => {
                 <motion.div 
                   initial={{ rotate: -10, scale: 0 }}
                   animate={{ rotate: 0, scale: 1 }}
-                  transition={{ delay: 0.4, type: "spring" }}
+                  transition={{ delay: 0.2, type: "spring" }}
                   className="w-20 h-20 bg-accent rounded-2xl flex items-center justify-center shadow-lg shadow-accent/20"
                 >
                   <Scale className="w-10 h-10 text-accent-foreground" />
@@ -69,7 +67,7 @@ const InitialLanguagePopup: React.FC = () => {
                   <motion.h2 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.3 }}
                     className="text-3xl md:text-4xl font-display font-bold text-foreground"
                   >
                     Welcome / स्वागत आहे
@@ -77,7 +75,7 @@ const InitialLanguagePopup: React.FC = () => {
                   <motion.p 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
+                    transition={{ delay: 0.4 }}
                     className="text-muted-foreground text-lg"
                   >
                     Please select your preferred language
@@ -92,8 +90,11 @@ const InitialLanguagePopup: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 }}
-                    onClick={() => confirmLanguage('en')}
+                    transition={{ delay: 0.5 }}
+                    onClick={() => {
+                      setIsVisible(false);
+                      setTimeout(() => confirmLanguage('en'), 300); // Wait for exit animation
+                    }}
                     className="group relative flex flex-col items-start p-6 text-left rounded-2xl border-2 border-border hover:border-accent bg-background transition-all duration-300"
                   >
                     <div className="flex items-center justify-between w-full mb-4">
@@ -111,8 +112,11 @@ const InitialLanguagePopup: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 }}
-                    onClick={() => confirmLanguage('mr')}
+                    transition={{ delay: 0.6 }}
+                    onClick={() => {
+                      setIsVisible(false);
+                      setTimeout(() => confirmLanguage('mr'), 300); // Wait for exit animation
+                    }}
                     className="group relative flex flex-col items-start p-6 text-left rounded-2xl border-2 border-border hover:border-accent bg-background transition-all duration-300"
                   >
                     <div className="flex items-center justify-between w-full mb-4">

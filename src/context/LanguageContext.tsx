@@ -18,9 +18,7 @@ interface LanguageProviderProps {
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
   const { i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState<string>(i18n.language || 'en');
-  const [hasSelectedLanguage, setHasSelectedLanguage] = useState<boolean>(() => {
-    return localStorage.getItem('language-selected') === 'true';
-  });
+  const [hasSelectedLanguage, setHasSelectedLanguage] = useState<boolean>(false);
 
   useEffect(() => {
     setCurrentLanguage(i18n.language);
@@ -29,25 +27,23 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language);
     setCurrentLanguage(language);
-    localStorage.setItem('language-selected', 'true');
     setHasSelectedLanguage(true);
   };
 
   const confirmLanguage = (language: string) => {
     changeLanguage(language);
-    localStorage.setItem('language-selected', 'true');
     setHasSelectedLanguage(true);
   };
 
   const isMarathi = currentLanguage === 'mr';
 
-  const value = {
+  const value = React.useMemo(() => ({
     currentLanguage,
     changeLanguage,
     isMarathi,
     hasSelectedLanguage,
     confirmLanguage
-  };
+  }), [currentLanguage, isMarathi, hasSelectedLanguage]);
 
   return (
     <LanguageContext.Provider value={value}>

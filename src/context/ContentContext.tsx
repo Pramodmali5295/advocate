@@ -74,11 +74,11 @@ export const seedContent: SiteContent = {
     heroTitle: 'The Voices of the People We Represent',
     heroSubtitle: "Our legacy is built on the success of our clients. Explore honest reflections on our service from the individuals and businesses who have trusted us with their most critical legal matters.",
     items: [
-      { id: 1, name: 'Rajesh Sharma', role: 'Business Owner', content: 'Advocate Kumar handled my property dispute case with exceptional professionalism. His strategic approach and deep knowledge of property law helped us secure a favorable judgment. Highly recommended for any real estate legal matters.', rating: 5, location: 'Delhi' },
-      { id: 2, name: 'Priya Mehta', role: 'Corporate Executive', content: 'During a challenging family law matter, Advocate Kumar provided not just legal expertise but also emotional support. His compassionate yet strategic approach made a difficult situation manageable. Forever grateful.', rating: 5, location: 'Gurgaon' },
-      { id: 3, name: 'Vikram Singh', role: 'Entrepreneur', content: 'Our company has been working with Advocate Kumar for corporate legal matters for over 5 years. His understanding of business law and quick response time have been invaluable for our operations.', rating: 5, location: 'Noida' },
-      { id: 4, name: 'Anita Desai', role: 'Homemaker', content: 'I was falsely accused in a criminal case. Advocate Kumar believed in my innocence and fought tirelessly. His courtroom skills and dedication resulted in my complete acquittal. He truly fights for justice.', rating: 5, location: 'Delhi' },
-      { id: 5, name: 'Suresh Nair', role: 'Software Engineer', content: 'Advocate Kumar resolved my consumer dispute against a major telecom company swiftly and efficiently. His thorough understanding of consumer law and confident advocacy saved me significant time and money.', rating: 5, location: 'Mumbai' },
+      { id: 1, name: 'Rajesh Sharma', role: 'Business Owner', content: 'Advocate Qureshi handled my property dispute case with exceptional professionalism. His strategic approach and deep knowledge of property law helped us secure a favorable judgment. Highly recommended for any real estate legal matters.', rating: 5, location: 'Delhi' },
+      { id: 2, name: 'Priya Mehta', role: 'Corporate Executive', content: 'During a challenging family law matter, Advocate Qureshi provided not just legal expertise but also emotional support. His compassionate yet strategic approach made a difficult situation manageable. Forever grateful.', rating: 5, location: 'Gurgaon' },
+      { id: 3, name: 'Vikram Singh', role: 'Entrepreneur', content: 'Our company has been working with Advocate Qureshi for corporate legal matters for over 5 years. His understanding of business law and quick response time have been invaluable for our operations.', rating: 5, location: 'Noida' },
+      { id: 4, name: 'Anita Desai', role: 'Homemaker', content: 'I was falsely accused in a criminal case. Advocate Qureshi believed in my innocence and fought tirelessly. His courtroom skills and dedication resulted in my complete acquittal. He truly fights for justice.', rating: 5, location: 'Delhi' },
+      { id: 5, name: 'Suresh Nair', role: 'Software Engineer', content: 'Advocate Qureshi resolved my consumer dispute against a major telecom company swiftly and efficiently. His thorough understanding of consumer law and confident advocacy saved me significant time and money.', rating: 5, location: 'Mumbai' },
     ],
   },
   practiceAreas: {
@@ -103,7 +103,7 @@ export const seedContent: SiteContent = {
     education: 'LL.B., M.Com',
     location: 'Beed, Maharashtra',
     bio: [
-      'Advocate Arun Kumar is a distinguished legal professional with over two decades of experience in criminal defense, civil litigation, family law, and corporate legal matters. His career is marked by an unwavering commitment to justice and client success.',
+      'Advocate A. N. Qureshi is a distinguished legal professional with over two decades of experience in criminal defense, civil litigation, family law, and corporate legal matters. His career is marked by an unwavering commitment to justice and client success.',
       'After completing his law degree from the prestigious Delhi University, he was enrolled with the Bar Council of Delhi in 2003. His early years were spent learning under senior advocates at leading law firms, where he developed a strong foundation in litigation strategy and courtroom advocacy.',
       'In 2012, he established Advocate Law Chambers with a vision to provide accessible, high-quality legal services to individuals and businesses alike. The practice has since grown to handle cases across various courts, including the Supreme Court of India, High Courts, District Courts, and specialized tribunals.',
     ],

@@ -99,11 +99,11 @@ export const AdminLayout = () => {
             isSidebarOpen ? '' : 'justify-center'
           )}>
             <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-accent font-semibold">AK</span>
+              <span className="text-accent font-semibold">ANQ</span>
             </div>
             {isSidebarOpen && (
               <div className="flex-1 min-w-0">
-                <p className="font-medium text-cream truncate">Adv. Arun Kumar</p>
+                <p className="font-medium text-cream truncate">Adv. A. N. Qureshi</p>
                 <p className="text-xs text-cream/60">Super Admin</p>
               </div>
             )}
@@ -219,7 +219,7 @@ export const AdminLayout = () => {
               {/* User Menu */}
               <button className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
                 <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                  <span className="text-accent text-sm font-semibold">AK</span>
+                  <span className="text-accent text-sm font-semibold">ANQ</span>
                 </div>
                 <ChevronDown className="w-4 h-4 text-muted-foreground hidden sm:block" />
               </button>

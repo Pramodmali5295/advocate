@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import { useContent } from '@/context/ContentContext';
 import { useTranslation } from 'react-i18next';
 import LanguageToggle from '@/components/ui/LanguageToggle';
+import { useLanguage } from '@/context/LanguageContext';
 
 const navLinks = [
   { name: 'navigation.home', path: '/' },
@@ -22,6 +23,7 @@ export const Header = () => {
   const { settings } = content;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isMarathi } = useLanguage();
   const location = useLocation();
 
   useEffect(() => {
@@ -175,8 +177,8 @@ export const Header = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-light/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         
-        <div className="container-legal relative flex flex-col pt-20 pb-8">
-          <nav className="overflow-y-auto py-4">
+        <div className="container-legal relative flex flex-col pt-20 pb-8 overflow-y-auto no-scrollbar h-full">
+          <nav className="py-2">
             <div className="flex flex-col gap-2">
               {navLinks.map((link, index) => (
                 <Link
@@ -201,35 +203,24 @@ export const Header = () => {
           </nav>
           
           <div className={cn(
-            "mt-6 pt-6 border-t border-border/50 space-y-6 transition-all duration-500 delay-500",
+            "mt-auto pt-6 border-t border-border/50 shrink-0 space-y-6 transition-all duration-500 delay-500",
             isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           )}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div
-                className="flex items-center gap-4 text-foreground p-4 rounded-xl bg-muted/50"
-              >
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Phone className="w-6 h-6 text-accent" />
+            <div>
+              <div className="flex items-center justify-between p-5 rounded-xl bg-muted/50">
+                <div className="flex flex-col">
+                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Language / भाषा</div>
+                  <div className="text-xs font-medium text-foreground">{isMarathi ? 'मराठी' : 'English'}</div>
                 </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold mb-1">Call Us Anytime</div>
-                  <span className="font-semibold">{settings.phone}</span>
-                </div>
-              </div>
-              
-              <div className="flex items-center justify-center p-4 rounded-xl bg-muted/50">
-                <div className="flex flex-col items-center gap-2">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Language</div>
-                  <LanguageToggle />
-                </div>
+                <LanguageToggle />
               </div>
             </div>
             
             <Link to="/inquiry" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button className="btn-gold w-full py-7 h-auto text-xl font-bold shadow-gold group">
+              <Button className="btn-gold w-full py-6 h-auto text-lg font-bold shadow-gold group">
                 <span className="flex items-center gap-2">
                   {t('common.bookConsultation')}
-                  <svg className="w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </span>

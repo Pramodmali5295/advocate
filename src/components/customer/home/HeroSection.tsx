@@ -56,7 +56,7 @@ export const HeroSection = () => {
 
         <div className="container-legal relative z-10 flex flex-col items-center text-center py-16 md:py-24">
           {/* Badge */}
-          <div className="hero-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-8">
+          <div className="hero-badge inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 mb-6 md:mb-8">
             <Award className="w-4 h-4 text-accent flex-shrink-0" />
             <span className="text-cream/90 text-xs sm:text-sm font-medium tracking-widest uppercase">
               {badge}
@@ -65,7 +65,7 @@ export const HeroSection = () => {
           
           {/* Main Title */}
           <h1 className={cn(
-            "hero-title font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-cream mb-8 max-w-[90rem]",
+            "hero-title font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-cream mb-6 md:mb-8 max-w-[90rem]",
             isEn ? "leading-[1.1] tracking-tight" : "leading-[1.3] tracking-normal"
           )}>
             {title.split('\n').map((line, i) => (
@@ -92,7 +92,7 @@ export const HeroSection = () => {
           <div className="w-24 h-1.5 rounded-full bg-accent mb-10 opacity-80" />
 
           {/* Subtitle */}
-          <p className="hero-sub text-cream/75 text-lg sm:text-xl md:text-2xl max-w-4xl leading-relaxed mb-12 font-light">
+          <p className="hero-sub text-cream/75 text-base sm:text-xl md:text-2xl max-w-4xl leading-relaxed mb-8 md:mb-12 font-light">
             {subtitle}
           </p>
 
@@ -100,7 +100,7 @@ export const HeroSection = () => {
           <div className="hero-cta flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 w-full">
             <Link to="/inquiry" className="w-full sm:w-auto">
               <Button
-                className="btn-gold text-base md:text-lg px-10 py-6 h-auto w-full text-white shadow-2xl hover:scale-105 transition-all duration-300 group"
+                className="bg-accent text-white hover:bg-gold-dark shadow-gold text-base md:text-lg px-10 py-6 h-auto w-full font-bold hover:scale-105 transition-all duration-300 group"
               >
                 {t('common.bookConsultation')}
                 <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
@@ -109,27 +109,29 @@ export const HeroSection = () => {
           </div>
 
           {/* Stats Row */}
-          <div className="hero-stat-wrapper w-full max-w-3xl">
+          <div className="hero-stat-wrapper w-full max-w-4xl mx-auto">
             {/* thin separator */}
-            <div className="mb-8 flex items-center gap-4">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-cream/30 text-xs tracking-widest uppercase">{isEn ? 'Proven Track Record' : (hero.marathi as any)?.trackRecord || 'सिद्ध ट्रॅक रेकॉर्ड'}</span>
-              <div className="flex-1 h-px bg-white/10" />
+            <div className="mb-10 flex items-center gap-6">
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+              <span className="text-accent/60 text-xs tracking-[0.3em] uppercase font-semibold whitespace-nowrap px-4 py-1.5 border border-white/5 rounded-full bg-white/5 backdrop-blur-sm">
+                {isEn ? 'Proven Track Record' : (hero.marathi as any)?.trackRecord || 'सिद्ध ट्रॅक रेकॉर्ड'}
+              </span>
+              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 md:gap-16">
               {hero.stats.map((stat, i) => {
                 const Icon = statIcons[i % statIcons.length];
                 const marathiStat = hero.marathi?.stats?.[i];
                 return (
                   <div key={i} className="hero-stat flex flex-col items-center text-center group">
-                    <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl bg-accent/15 border border-accent/20 flex items-center justify-center mb-3 group-hover:bg-accent/25 transition-colors duration-300">
-                      <Icon className="w-5 h-5 md:w-6 md:h-6 text-accent" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-5 group-hover:bg-accent/20 group-hover:scale-110 transition-all duration-500">
+                      <Icon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                     </div>
-                    <div className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-cream mb-1 leading-none">
+                    <div className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-cream mb-3 leading-none">
                       {isEn ? stat.value : (marathiStat?.value || stat.value)}
                     </div>
-                    <div className="text-cream/55 text-[10px] sm:text-xs md:text-sm font-medium tracking-wide">
+                    <div className="text-cream/60 text-xs md:text-sm font-semibold tracking-widest uppercase">
                       {isEn ? stat.label : (marathiStat?.label || (i === 0 ? t('hero.stats.casesWon') : i === 1 ? t('hero.stats.yearsExperience') : t('hero.stats.successRate')))}
                     </div>
                   </div>

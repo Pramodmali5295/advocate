@@ -111,15 +111,15 @@ const PracticeAreas = () => {
                 </div>
 
                 {/* CTA */}
-                <div className="bg-navy rounded-2xl p-6 md:p-8 text-center sm:text-left">
+                <div className="bg-navy rounded-2xl p-6 md:p-8 text-center">
                   <h3 className="font-display text-xl md:text-2xl font-semibold text-cream mb-4">
                     {t('practiceAreas.needLegalAssistance')} {isEn ? (dynamicArea?.title || t(`${areaKey}.title`)) : (marathiArea?.title || t(`${areaKey}.title`))}?
                   </h3>
                   <p className="text-cream/70 mb-6 text-sm md:text-base">
                     {t('practiceAreas.bookConsultationDesc')}
                   </p>
-                  <Link to="/inquiry">
-                    <Button className="btn-gold w-full sm:w-auto">
+                  <Link to="/inquiry" className="inline-block mx-auto">
+                    <Button className="btn-gold w-full sm:w-auto px-10">
                       {t('common.bookConsultation')} <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </Link>

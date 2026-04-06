@@ -30,7 +30,7 @@ export const CTASection = () => {
                 <h2 className="heading-section text-cream mb-6">{isEn ? (cta.title || t('cta.title')) : t('cta.title')}</h2>
                 <p className="text-cream/80 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">{isEn ? (cta.subtitle || t('cta.subtitle')) : t('cta.subtitle')}</p>
                 <div className="flex justify-center lg:justify-start">
-                  <Button asChild className="btn-gold text-lg md:text-xl px-10 py-7 h-auto w-full sm:w-auto text-white shadow-2xl hover:scale-105 transition-all group">
+                  <Button asChild className="bg-accent text-white hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105 text-lg md:text-xl px-10 py-7 h-auto w-full sm:w-auto shadow-2xl group ml-12 lg:ml-32">
                     <Link to="/inquiry">
                       {t('cta.buttonText')}
                       <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-1" />

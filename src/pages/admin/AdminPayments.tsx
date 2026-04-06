@@ -107,14 +107,14 @@ const AdminPayments = () => {
       {/* Filters & Export */}
       <div className="admin-card">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex gap-2">
+          <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 sm:pb-0 -mx-2 px-2 sm:mx-0 sm:px-0">
             {['week', 'month', 'quarter', 'year'].map((range) => (
               <button
                 key={range}
                 onClick={() => setDateRange(range)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap shrink-0 ${
                   dateRange === range
-                    ? 'bg-accent text-accent-foreground'
+                    ? 'bg-accent text-accent-foreground shadow-sm'
                     : 'bg-muted text-muted-foreground hover:bg-muted/80'
                 }`}
               >

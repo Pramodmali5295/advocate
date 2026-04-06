@@ -16,9 +16,9 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* Deep Regal Blue - Primary Brand Color */
-    --primary: 222 40% 18%;
-    --primary-foreground: 40 33% 98%;
+    /* Primary Brand Color - Synced with Accent per request */
+    --primary: 43 80% 48%;
+    --primary-foreground: 222 47% 11%;
 
     /* Sophisticated Charcoal - Secondary */
     --secondary: 215 20% 32%;
@@ -29,7 +29,7 @@
     --muted-foreground: 215 16% 47%;
 
     /* Gold Accent - Premium feel */
-    --accent: 43 74% 49%;
+    --accent: 43 80% 48%;
     --accent-foreground: 222 47% 11%;
 
     /* Destructive */
@@ -38,7 +38,7 @@
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 43 74% 49%;
+    --ring: 43 80% 48%;
 
     --radius: 0.375rem;
 
@@ -47,9 +47,9 @@
     --navy-light: 222 35% 25%;
     --charcoal: 215 20% 32%;
     --charcoal-light: 215 15% 45%;
-    --gold: 43 74% 49%;
-    --gold-light: 43 74% 60%;
-    --gold-dark: 43 74% 40%;
+    --gold: 43 80% 48%;
+    --gold-light: 43 80% 58%;
+    --gold-dark: 43 80% 38%;
     --cream: 40 33% 98%;
     --cream-dark: 40 20% 94%;
 
@@ -61,8 +61,8 @@
     );
     --gradient-gold: linear-gradient(
       135deg,
-      hsl(43 74% 49%) 0%,
-      hsl(43 74% 60%) 100%
+      hsl(43 80% 48%) 0%,
+      hsl(43 80% 60%) 100%
     );
     --gradient-card: linear-gradient(
       180deg,
@@ -149,16 +149,15 @@
 @layer components {
   /* Premium Button Variants */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-navy-light transition-all duration-300;
+    @apply bg-primary text-primary-foreground hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105;
   }
 
   .btn-gold {
-    @apply bg-accent text-accent-foreground hover:bg-gold-dark transition-all duration-300 font-semibold;
-    box-shadow: var(--shadow-gold);
+    @apply bg-accent text-white hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105;
   }
 
   .btn-outline-gold {
-    @apply border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-300;
+    @apply border-2 border-accent text-accent hover:bg-accent hover:text-accent-foreground shadow-gold transition-all duration-300 font-bold hover:scale-105;
   }
 
   /* Card Styles */
@@ -181,17 +180,17 @@
   }
 
   .container-legal {
-    @apply w-full mx-auto px-4 sm:px-6 lg:px-10 max-w-[1536px];
+    @apply w-full mx-auto px-5 sm:px-6 lg:px-10 max-w-[1536px];
   }
 
   .home-page .container-legal {
-    @apply max-w-none px-6 sm:px-10 lg:px-16 xl:px-24;
+    @apply max-w-full mx-auto px-8 sm:px-12 lg:px-24;
   }
 
   /* Typography */
   .heading-display {
     font-family: "Playfair Display", "Noto Serif Devanagari", serif;
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-snug lg:leading-[1.15];
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight lg:leading-[1.15];
   }
 
   .heading-section {
@@ -374,12 +373,12 @@
   }
 
   .bg-gradient-gold {
-    background: var(--gradient-gold);
+    background: linear-gradient(135deg, hsl(43 80% 48%) 0%, hsl(43 80% 60%) 100%);
   }
 
   /* Text gradient */
   .text-gradient-gold {
-    background: var(--gradient-gold);
+    background: linear-gradient(135deg, hsl(43 80% 48%) 0%, hsl(43 80% 60%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -468,4 +467,15 @@ html {
 
 .overflow-x-auto::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--accent));
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

@@ -45,18 +45,18 @@ const AdminPages = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex flex-wrap gap-2 border-b border-border pb-4">
+      <div className="flex overflow-x-auto no-scrollbar gap-2 border-b border-border pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 whitespace-nowrap items-center">
         {tabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all shrink-0 ${
               activeTab === tab.id
                 ? 'bg-accent text-accent-foreground shadow-sm'
                 : 'bg-muted text-muted-foreground hover:bg-muted/80'
             }`}
           >
-            <tab.icon className="w-4 h-4" />
+            <tab.icon className="w-4 h-4 shrink-0" />
             <span>{tab.label}</span>
             <span className={`text-[10px] hidden sm:inline ${activeTab === tab.id ? 'text-accent-foreground/70' : 'text-muted-foreground/60'}`}>
               {tab.route}

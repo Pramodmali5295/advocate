@@ -142,9 +142,9 @@ const Knowledge = () => {
           <div>
             <h2 className="heading-section text-foreground mb-6">{t('knowledge.allArticles')}</h2>
             <div className="accent-line mb-8" />
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredArticles.map((article) => (
-                <article key={article.id} className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-5 sm:p-6 bg-card border border-border rounded-lg hover:shadow-md transition-all group cursor-pointer" onClick={() => setSelectedArticle(article)}>
+                <article key={article.id} className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 p-5 sm:p-6 bg-card border border-border rounded-lg hover:shadow-md transition-all group cursor-pointer h-full" onClick={() => setSelectedArticle(article)}>
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
                   </div>
@@ -160,7 +160,9 @@ const Knowledge = () => {
                 </article>
               ))}
               {filteredArticles.length === 0 && (
-                <p className="text-center text-muted-foreground py-12">{t('knowledge.noArticles')}</p>
+                <div className="col-span-full">
+                  <p className="text-center text-muted-foreground py-12">{t('knowledge.noArticles')}</p>
+                </div>
               )}
             </div>
           </div>

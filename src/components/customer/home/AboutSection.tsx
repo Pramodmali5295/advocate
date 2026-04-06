@@ -74,7 +74,7 @@ export const AboutSection = () => {
               })}
             </div>
 
-            <Button asChild className="btn-gold px-10 py-7 h-auto text-lg w-full sm:w-auto text-white shadow-xl hover:scale-105 transition-all group">
+            <Button asChild className="bg-accent text-white hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105 px-10 py-7 h-auto text-lg w-full sm:w-auto shadow-xl group">
               <Link to="/about">
                 {t('common.learnMore')}
                 <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-1" />

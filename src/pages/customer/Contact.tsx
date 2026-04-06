@@ -39,10 +39,10 @@ const Contact = () => {
         <div className="container-legal">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
-            <div>
+            <div className="flex flex-col h-full">
               <h2 className="heading-section text-foreground mb-6">{t('footer.contactUs')}</h2>
               <div className="accent-line mb-8" />
-              <div className="space-y-6">
+              <div className="space-y-6 flex-grow flex flex-col">
                 {/* Address */}
                 <div className="card-premium p-6">
                   <div className="flex items-start gap-4">
@@ -101,11 +101,11 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div>
+            <div className="flex flex-col h-full">
               <h2 className="heading-section text-foreground mb-6">{t('contact.location', 'Location')}</h2>
               <div className="accent-line mb-8" />
-              <div className="card-premium overflow-hidden">
-                <div className="aspect-square sm:aspect-video bg-muted">
+              <div className="card-premium overflow-hidden flex-grow flex flex-col">
+                <div className="w-full h-full flex-grow bg-muted min-h-[300px]">
                   <iframe
                     src={c.mapEmbed}
                     width="100%"
@@ -117,21 +117,17 @@ const Contact = () => {
                     className="w-full h-full"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-semibold text-foreground mb-2">{t('contact.howToReach', 'How to Reach Us')}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {t('contact.directions', 'Located near Civil Lines Metro Station (Yellow Line). Ample parking available in the building basement.')}
-                  </p>
-                </div>
               </div>
 
-              <div className="mt-8 p-6 bg-navy rounded-lg text-center sm:text-left">
+              <div className="mt-8 p-6 bg-navy rounded-lg text-center sm:text-left flex-shrink-0">
                 <h3 className="font-display text-lg font-semibold text-cream mb-3">{t('contact.consultationTitle', 'For Detailed Legal Consultation')}</h3>
                 <p className="text-cream/70 text-sm mb-6">
                   {t('contact.consultationDesc', 'General questions can be addressed via phone or email. For detailed legal consultation and case analysis, please book a consultation through our secure form.')}
                 </p>
                 <Link to="/inquiry" className="block sm:inline-block">
-                  <Button className="btn-gold w-full sm:w-auto">{t('common.bookConsultation')}</Button>
+                  <Button className="bg-accent text-white hover:bg-gold-dark shadow-gold font-bold hover:scale-105 w-full sm:w-auto transition-all duration-300 ml-24 lg:ml-60">
+                    {t('common.bookConsultation')}
+                  </Button>
                 </Link>
               </div>
             </div>

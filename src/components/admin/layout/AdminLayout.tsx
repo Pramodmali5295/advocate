@@ -184,7 +184,7 @@ export const AdminLayout = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen min-w-0 overflow-x-hidden">
         {/* Top Bar */}
-        <header className="bg-card/80 backdrop-blur-md border-b border-border px-6 py-4 sticky top-0 z-30">
+        <header className="bg-card/80 backdrop-blur-md border-b border-border px-4 md:px-6 py-3 md:py-4 sticky top-0 z-30">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <button 
@@ -194,10 +194,10 @@ export const AdminLayout = () => {
                 <Menu className="w-6 h-6" />
               </button>
               <div>
-                <h1 className="font-display text-xl font-semibold text-foreground">
+                <h1 className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate max-w-[120px] sm:max-w-none">
                   {sidebarLinks.find(l => isActive(l.path))?.name || 'Dashboard'}
                 </h1>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-[10px] sm:text-sm text-muted-foreground truncate">
                   Manage your law practice
                 </p>
               </div>

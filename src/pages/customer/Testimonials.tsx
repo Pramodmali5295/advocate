@@ -96,24 +96,6 @@ const TestimonialsPage = () => {
             ))}
           </div>
 
-          {/* Stats Summary */}
-          <div className="mt-20 flex flex-col items-center">
-            <div className="bg-navy text-cream p-1 rounded-2xl w-full max-w-4xl shadow-2xl">
-              <div className="bg-navy-light/50 backdrop-blur-sm rounded-xl p-8 md:p-12 border border-white/5 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-display font-bold mb-2">{t('testimonials.reputationTitle')}</h3>
-                  <p className="text-cream/70 text-lg">{t('testimonials.reputationSubtitle')}</p>
-                </div>
-                <div className="flex flex-col items-center gap-2">
-                  <div className="text-5xl font-display font-bold text-accent">5.0 <span className="text-2xl text-cream/30">/ 5</span></div>
-                  <div className="flex gap-1">
-                    {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-6 h-6 fill-accent text-accent" />)}
-                  </div>
-                  <div className="text-sm font-medium text-cream/50 uppercase tracking-widest mt-2">{items.length} {t('testimonials.verifiedReviews')}</div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 

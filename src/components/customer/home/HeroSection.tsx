@@ -65,7 +65,7 @@ export const HeroSection = () => {
           
           {/* Main Title */}
           <h1 className={cn(
-            "hero-title font-display text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-cream mb-6 md:mb-8 max-w-[90rem]",
+            "hero-title font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-cream mb-6 md:mb-8 max-w-[90rem]",
             isEn ? "leading-[1.1] tracking-tight" : "leading-[1.3] tracking-normal"
           )}>
             {title.split('\n').map((line, i) => (

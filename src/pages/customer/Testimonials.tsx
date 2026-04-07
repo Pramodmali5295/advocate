@@ -5,10 +5,13 @@ import { useContent } from '@/context/ContentContext';
 import { useTranslation } from 'react-i18next';
 
 const TestimonialsPage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { content } = useContent();
   const { testimonials } = content;
   const items = testimonials.items;
+  const isEn = i18n.language === 'en';
+  const heroTitle = isEn ? (testimonials.heroTitle || t('testimonials.heroTitle')) : (testimonials.marathi?.heroTitle || t('testimonials.heroTitle'));
+  const heroSubtitle = isEn ? (testimonials.heroSubtitle || t('testimonials.heroSubtitle')) : (testimonials.marathi?.heroSubtitle || t('testimonials.heroSubtitle'));
 
   const getInitials = (name: string) =>
     name
@@ -21,21 +24,25 @@ const TestimonialsPage = () => {
   return (
     <Layout>
       {/* Hero Header */}
-      <section className="relative pt-32 pb-20 bg-navy text-cream overflow-hidden">
+      <section className="relative pt-32 pb-16 md:pt-44 md:pb-24 bg-navy text-cream overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_120%,rgba(196,160,82,0.3),transparent_50%)]" />
         </div>
         
         <div className="container-legal relative z-10 text-center">
           <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-3 duration-700">
-            {t('testimonials.badge')}
+            {isEn ? (testimonials.badge || t('testimonials.badge')) : (testimonials.marathi?.badge || t('testimonials.badge'))}
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-            {t('testimonials.heroTitle')}
+            {heroTitle.split('\n').map((line, i) => (
+              <span key={i} className={`block ${!isEn && i > 0 ? 'mt-3 sm:mt-4' : ''} ${!isEn ? 'py-1' : ''}`}>
+                {line}
+              </span>
+            ))}
           </h1>
           <div className="accent-line-center mb-8 animate-in fade-in zoom-in duration-700 delay-200" />
           <p className="text-cream/80 max-w-2xl mx-auto text-lg leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
-            {t('testimonials.heroSubtitle')}
+            {heroSubtitle}
           </p>
         </div>
       </section>
@@ -102,7 +109,7 @@ const TestimonialsPage = () => {
       {/* Secondary CTA */}
       <section className="py-24 bg-background relative overflow-hidden">
         <div className="container-legal text-center relative z-10 px-4">
-           <h2 className="text-3xl md:text-4xl font-display font-bold mb-8">{t('testimonials.ctaTitle')}</h2>
+           <h2 className="heading-section mb-8 px-4">{t('testimonials.ctaTitle')}</h2>
            <p className="text-body max-w-2xl mx-auto mb-10 text-lg">
              {t('testimonials.ctaSubtitle')}
            </p>

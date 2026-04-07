@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -9,6 +9,11 @@ export const AboutTab = () => {
   const { content, updateAboutPage } = useContent();
   const { toast } = useToast();
   const [data, setData] = useState(content.aboutPage);
+  
+  // Sync local state when content loads from Firestore
+  useEffect(() => {
+    setData(content.aboutPage);
+  }, [content.aboutPage]);
 
   const save = () => {
     updateAboutPage(data);
@@ -51,12 +56,6 @@ export const AboutTab = () => {
             <input className="form-input" placeholder="e.g. New Delhi, India" value={data.location} onChange={e => setData({ ...data, location: e.target.value })} />
           </Field>
         </div>
-        <Field label='Page Heading (big text in dark banner, e.g. "Committed to Justice…")'>
-          <input className="form-input" value={data.heroTitle} onChange={e => setData({ ...data, heroTitle: e.target.value })} />
-        </Field>
-        <Field label="Sub-heading Description (below the page heading in the dark banner)">
-          <textarea className="form-input min-h-[80px]" value={data.heroSubtitle} onChange={e => setData({ ...data, heroSubtitle: e.target.value })} />
-        </Field>
       </SectionCard>
 
       <SectionCard
@@ -110,15 +109,7 @@ export const AboutTab = () => {
         <Button variant="outline" onClick={addTimeline} className="w-full"><Plus className="w-4 h-4 mr-2" />Add Timeline Entry</Button>
       </SectionCard>
 
-      <SectionCard
-        title={`"Our Ethical Commitment" Statement`}
-        page="About Page ( /about ) — bottom dark card"
-        hint={`This text appears in the dark navy box at the bottom of the About page under the heading "Our Ethical Commitment".`}
-      >
-        <Field label="Ethics Statement Text">
-          <textarea className="form-input min-h-[100px]" value={data.ethicsStatement} onChange={e => setData({ ...data, ethicsStatement: e.target.value })} />
-        </Field>
-      </SectionCard>
+
 
       <div className="flex justify-end">
         <Button onClick={save} className="btn-gold"><Save className="w-4 h-4 mr-2" />Save & Publish About Page</Button>

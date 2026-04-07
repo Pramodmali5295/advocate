@@ -66,7 +66,13 @@ const PracticeAreas = () => {
               <div className="w-12 h-12 md:w-16 md:h-16 bg-accent rounded-xl flex items-center justify-center">
                 <IconComponent className="w-6 h-6 md:w-8 md:h-8 text-accent-foreground" />
               </div>
-              <h1 className="heading-display text-cream text-3xl md:text-5xl">{isEn ? (dynamicArea?.title || t(`${areaKey}.title`)) : (marathiArea?.title || t(`${areaKey}.title`))}</h1>
+              <h1 className="heading-display text-cream text-3xl md:text-5xl">
+                {(isEn ? (dynamicArea?.title || t(`${areaKey}.title`)) : (marathiArea?.title || t(`${areaKey}.title`))).split('\n').map((line, i) => (
+                  <span key={i} className={`block ${!isEn && i > 0 ? 'mt-2' : ''} ${!isEn ? 'py-1' : ''}`}>
+                    {line}
+                  </span>
+                ))}
+              </h1>
             </div>
             <p className="text-cream/80 text-base md:text-lg max-w-2xl mx-auto animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
               {isEn ? (dynamicArea?.fullDescription || t(`${areaKey}.fullDescription`)) : (marathiArea?.fullDescription || t(`${areaKey}.fullDescription`))}
@@ -169,14 +175,18 @@ const PracticeAreas = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-hero pt-44 pb-20">
+      <section className="bg-gradient-hero pt-32 pb-16 md:pt-44 md:pb-20">
         <div className="container-legal text-center">
           <div className="max-w-4xl mx-auto">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-3 duration-700">
               {isEn ? (practiceAreas.badge || t('practiceAreas.badge')) : (practiceAreas.marathi?.badge || t('practiceAreas.badge'))}
             </span>
             <h1 className="heading-display text-cream mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-              {isEn ? (practiceAreas.heroTitle || t('practiceAreas.heroTitle')) : (practiceAreas.marathi?.heroTitle || t('practiceAreas.heroTitle'))}
+              {(isEn ? (practiceAreas.heroTitle || t('practiceAreas.heroTitle')) : (practiceAreas.marathi?.heroTitle || t('practiceAreas.heroTitle'))).split('\n').map((line, i) => (
+                <span key={i} className={`block ${!isEn && i > 0 ? 'mt-3 sm:mt-4' : ''} ${!isEn ? 'py-1' : ''}`}>
+                  {line}
+                </span>
+              ))}
             </h1>
             <p className="text-cream/80 text-lg leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
               {isEn ? (practiceAreas.heroSubtitle || t('practiceAreas.heroSubtitle')) : (practiceAreas.marathi?.heroSubtitle || t('practiceAreas.heroSubtitle'))}

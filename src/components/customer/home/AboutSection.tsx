@@ -52,27 +52,15 @@ export const AboutSection = () => {
               {badge}
             </span>
             <h2 className="heading-section text-foreground mb-4">
-              {title}
+              {title.split('\n').map((line, i) => (
+                <span key={i} className={`block ${!isEn && i > 0 ? 'mt-2' : ''} ${!isEn ? 'py-1' : ''}`}>
+                  {line}
+                </span>
+              ))}
             </h2>
             <div className="accent-line mb-6" />
 
             <p className="text-body mb-8">{description}</p>
-
-            {/* Highlights */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 mb-10">
-              {about.highlights.map((h, index) => {
-                const key = index === 0 ? 'casesHandled' : index === 1 ? 'yearsExperience' : index === 2 ? 'successRate' : 'highCourts';
-                const marathiH = about.marathi?.highlights?.[index];
-                return (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-accent font-bold text-sm">{isEn ? h.value : (marathiH?.value || h.value)}</span>
-                    </div>
-                    <span className="text-foreground text-sm font-medium">{isEn ? (h.label || t(`aboutSection.highlights.${key}`)) : (marathiH?.label || t(`aboutSection.highlights.${key}`))}</span>
-                  </div>
-                );
-              })}
-            </div>
 
             <Button asChild className="bg-accent text-white hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105 px-10 py-7 h-auto text-lg w-full sm:w-auto shadow-xl group">
               <Link to="/about">

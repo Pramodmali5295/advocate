@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -10,27 +10,16 @@ export const ContactTab = () => {
   const { toast } = useToast();
   const [data, setData] = useState(content.contact);
 
+  // Sync local state when content loads from Firestore
+  useEffect(() => {
+    setData(content.contact);
+  }, [content.contact]);
+
   const save = () => { updateContact(data); toast({ title: 'Contact Info Saved', description: 'Changes are now live on the Contact page.' }); };
 
   return (
     <div className="space-y-6">
-      <SectionCard
-        title="Page Header — Contact Us"
-        page="Contact Page ( /contact ) — top section"
-        hint="This section controls the main banner at the top of the Contact page."
-      >
-        <div className="grid sm:grid-cols-1 gap-4">
-          <Field label="Header Badge (small text at the very top)">
-            <input className="form-input" value={data.badge} onChange={e => setData({ ...data, badge: e.target.value })} />
-          </Field>
-          <Field label="Main Hero Title (the primary H1 heading)">
-            <input className="form-input" value={data.heroTitle} onChange={e => setData({ ...data, heroTitle: e.target.value })} />
-          </Field>
-          <Field label="Hero Subtitle (the text paragraph under the title)">
-            <textarea className="form-input min-h-[80px]" value={data.heroSubtitle} onChange={e => setData({ ...data, heroSubtitle: e.target.value })} />
-          </Field>
-        </div>
-      </SectionCard>
+
       <SectionCard
         title="Office Contact Information"
         page="Contact Page ( /contact ) & Footer (all pages)"

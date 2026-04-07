@@ -61,14 +61,18 @@ const Knowledge = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-hero pt-44 pb-20">
+      <section className="bg-gradient-hero pt-32 pb-16 md:pt-44 md:pb-20">
         <div className="container-legal text-center">
           <div className="max-w-4xl mx-auto flex flex-col items-center">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-3 duration-700">
               {isEn ? (knowledge.badge || t('knowledge.badge')) : (knowledge.marathi?.badge || t('knowledge.badge'))}
             </span>
             <h1 className="heading-display text-cream mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-              {isEn ? (knowledge.heroTitle || t('knowledge.heroTitle')) : (knowledge.marathi?.heroTitle || t('knowledge.heroTitle'))}
+              {(isEn ? (knowledge.heroTitle || t('knowledge.heroTitle')) : (knowledge.marathi?.heroTitle || t('knowledge.heroTitle'))).split('\n').map((line, i) => (
+                <span key={i} className={`block ${!isEn && i > 0 ? 'mt-3 sm:mt-4' : ''} ${!isEn ? 'py-1' : ''}`}>
+                  {line}
+                </span>
+              ))}
             </h1>
             <p className="text-cream/80 text-lg leading-relaxed mb-8 animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
               {isEn ? (knowledge.heroSubtitle || t('knowledge.heroSubtitle')) : (knowledge.marathi?.heroSubtitle || t('knowledge.heroSubtitle'))}

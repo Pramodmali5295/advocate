@@ -108,7 +108,7 @@ const Inquiry = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-gradient-hero pt-44 pb-20">
+      <section className="bg-gradient-hero pt-32 pb-16 md:pt-44 md:pb-20">
         <div className="container-legal text-center">
           <div className="max-w-4xl mx-auto">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-3 duration-700">

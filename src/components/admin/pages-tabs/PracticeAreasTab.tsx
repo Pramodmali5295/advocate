@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -8,11 +8,13 @@ import { SectionCard, Field } from '../shared/AdminSectionComponents';
 export const PracticeAreasTab = () => {
   const { content, updatePracticeAreas } = useContent();
   const { toast } = useToast();
-  const [badge, setBadge] = useState(content.practiceAreas.badge);
-  const [heroTitle, setHeroTitle] = useState(content.practiceAreas.heroTitle);
-  const [heroSubtitle, setHeroSubtitle] = useState(content.practiceAreas.heroSubtitle);
   const [areas, setAreas]       = useState(content.practiceAreas.items);
   const [expanded, setExpanded] = useState<string | null>(null);
+
+  // Sync local state when content loads from Firestore
+  useEffect(() => {
+    setAreas(content.practiceAreas.items);
+  }, [content.practiceAreas.items]);
 
   const update       = (id: string, field: string, value: unknown) => setAreas(areas.map(a => a.id === id ? { ...a, [field]: value } : a));
   const updateList   = (id: string, field: 'services' | 'courts', i: number, value: string) => {
@@ -22,32 +24,14 @@ export const PracticeAreasTab = () => {
   const removeListItem = (id: string, field: 'services' | 'courts', i: number) => setAreas(areas.map(a => a.id === id ? { ...a, [field]: (a[field] as string[]).filter((_, idx) => idx !== i) } : a));
 
   const save = () => { 
-    updatePracticeAreas({ badge, heroTitle, heroSubtitle, items: areas }); 
+    updatePracticeAreas({ ...content.practiceAreas, items: areas }); 
     toast({ title: 'Practice Areas Saved', description: 'Changes are now live on /practice-areas.' }); 
   };
 
   return (
     <div className="space-y-6">
-      <SectionCard
-        title="Page Header — Practice Areas"
-        page="Practice Areas Listing Page ( /practice-areas ) — top section"
-        hint="This section controls the main banner at the top of the Practice Areas page."
-      >
-        <div className="grid sm:grid-cols-1 gap-4">
-          <Field label="Header Badge (small text at the very top)">
-            <input className="form-input" value={badge} onChange={e => setBadge(e.target.value)} />
-          </Field>
-          <Field label="Main Hero Title (the primary H1 heading)">
-            <input className="form-input" value={heroTitle} onChange={e => setHeroTitle(e.target.value)} />
-          </Field>
-          <Field label="Hero Subtitle (the text paragraph under the title)">
-            <textarea className="form-input min-h-[80px]" value={heroSubtitle} onChange={e => setHeroSubtitle(e.target.value)} />
-          </Field>
-        </div>
-      </SectionCard>
-      <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 text-sm text-muted-foreground">
-        💡 Each card below is a Practice Area shown on <strong className="text-foreground">/practice-areas</strong> page and also in the <strong className="text-foreground">Practice Areas grid on the Home page</strong>. Use the <strong className="text-foreground">Active / Hidden</strong> toggle to show or hide a card on the website.
-      </div>
+
+
 
       {areas.map(area => (
         <div key={area.id} className="admin-card relative group">

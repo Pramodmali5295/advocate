@@ -13,7 +13,8 @@ import {
   LogOut,
   Bell,
   ChevronDown,
-  LayoutPanelLeft
+  LayoutPanelLeft,
+  ExternalLink
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
@@ -21,7 +22,6 @@ import { useToast } from '@/hooks/use-toast';
 
 const sidebarLinks = [
   { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
-  { name: 'Consultations', path: '/admin/inquiries', icon: FileText },
   { name: 'Services', path: '/admin/services', icon: Briefcase },
   { name: 'Testimonials', path: '/admin/testimonials', icon: MessageSquare },
   { name: 'Pages', path: '/admin/pages', icon: LayoutPanelLeft },
@@ -90,29 +90,27 @@ export const AdminLayout = () => {
               {isSidebarOpen && <span className="font-medium">{link.name}</span>}
             </Link>
           ))}
+          <div className="pt-4 mt-4 border-t border-navy-light/10">
+            <a
+              href="/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 px-4 py-3 rounded-lg text-cream/70 hover:bg-navy-light hover:text-cream transition-all"
+            >
+              <ExternalLink className="w-5 h-5 flex-shrink-0" />
+              {isSidebarOpen && <span className="font-medium">View Site</span>}
+            </a>
+          </div>
         </nav>
 
         {/* User Section */}
         <div className="p-4 border-t border-navy-light shrink-0">
-          <div className={cn(
-            'flex items-center gap-3 px-4 py-3',
-            isSidebarOpen ? '' : 'justify-center'
-          )}>
-            <div className="w-10 h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-accent font-semibold">ANQ</span>
-            </div>
-            {isSidebarOpen && (
-              <div className="flex-1 min-w-0">
-                <p className="font-medium text-cream truncate">Adv. A. N. Qureshi</p>
-                <p className="text-xs text-cream/60">Super Admin</p>
-              </div>
-            )}
-          </div>
+
           
           <button
             onClick={handleLogout}
             className={cn(
-              "w-full flex items-center gap-3 px-4 py-3 rounded-lg text-cream/60 hover:bg-destructive/10 hover:text-destructive transition-all mb-2",
+              "w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all mb-2 font-medium shadow-sm",
               !isSidebarOpen && "justify-center"
             )}
           >
@@ -120,12 +118,7 @@ export const AdminLayout = () => {
             {isSidebarOpen && <span className="font-medium">Logout</span>}
           </button>
           
-          <button
-            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="w-full mt-2 px-4 py-2 text-cream/60 hover:text-cream text-sm flex items-center justify-center gap-2"
-          >
-            {isSidebarOpen ? 'Collapse' : <Menu className="w-5 h-5" />}
-          </button>
+
         </div>
       </aside>
 
@@ -169,9 +162,21 @@ export const AdminLayout = () => {
                 </Link>
               ))}
 
+              <div className="pt-4 mt-4 border-t border-navy-light/10">
+                <a
+                  href="/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-cream/70 hover:bg-navy-light hover:text-cream transition-all"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  <span className="font-medium">View Site</span>
+                </a>
+              </div>
+
               <button
                 onClick={handleLogout}
-                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-cream/60 hover:bg-destructive/10 hover:text-destructive transition-all"
+                className="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-all font-medium shadow-sm"
               >
                 <LogOut className="w-5 h-5" />
                 <span className="font-medium">Logout</span>
@@ -193,39 +198,13 @@ export const AdminLayout = () => {
               >
                 <Menu className="w-6 h-6" />
               </button>
-              <div>
-                <h1 className="font-display text-lg sm:text-xl md:text-2xl font-semibold text-foreground truncate max-w-[120px] sm:max-w-none">
-                  {sidebarLinks.find(l => isActive(l.path))?.name || 'Dashboard'}
-                </h1>
-                <p className="text-[10px] sm:text-sm text-muted-foreground truncate">
-                  Manage your law practice
-                </p>
-              </div>
+
             </div>
 
-            <div className="flex items-center gap-4">
-              {/* View Site */}
-              <Link
-                to="/"
-                target="_blank"
-                className="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                View Site
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                </svg>
-              </Link>
 
-              {/* User Menu */}
-              <button className="flex items-center gap-2 p-2 hover:bg-muted rounded-lg">
-                <div className="w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center">
-                  <span className="text-accent text-sm font-semibold">ANQ</span>
-                </div>
-                <ChevronDown className="w-4 h-4 text-muted-foreground hidden sm:block" />
-              </button>
-            </div>
           </div>
         </header>
+
 
         {/* Page Content */}
         <main className="flex-1 p-4 md:p-6 min-w-0">

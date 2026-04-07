@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -9,6 +9,11 @@ export const InquiryTab = () => {
   const { content, updateInquiryPage } = useContent();
   const { toast } = useToast();
   const [data, setData] = useState(content.inquiryPage);
+
+  // Sync local state when content loads from Firestore
+  useEffect(() => {
+    setData(content.inquiryPage);
+  }, [content.inquiryPage]);
 
   const save = () => {
     updateInquiryPage(data);

@@ -9,11 +9,14 @@ const InitialLanguagePopup: React.FC = () => {
   const { hasSelectedLanguage, confirmLanguage } = useLanguage();
   const [isVisible, setIsVisible] = useState(false);
 
+  // Don't show the initial language popup on admin routes
+  const isAdminRoute = typeof window !== 'undefined' && window.location.pathname.startsWith('/admin');
+  
   useEffect(() => {
-    if (!hasSelectedLanguage) {
+    if (!hasSelectedLanguage && !isAdminRoute) {
       setIsVisible(true);
     }
-  }, [hasSelectedLanguage]);
+  }, [hasSelectedLanguage, isAdminRoute]);
 
   useEffect(() => {
     if (isVisible) {

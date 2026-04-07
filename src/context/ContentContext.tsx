@@ -46,7 +46,7 @@ export const seedContent: SiteContent = {
   },
   aboutSection: {
     badge: 'Senior Advocate',
-    title: 'Precision in Law, Resilience in Advocacy',
+    title: 'Precision in Law,\nResilience in Advocacy',
     name: 'Adv. A.N. Qureshi',
     title_designation: 'M.Com, LL.B., G.D.C & A.',
     experience: '15+',
@@ -169,8 +169,6 @@ export const seedContent: SiteContent = {
     address: 'Humayun Plaza, Beed',
     inquiryFee: 499,
     currency: 'INR',
-    adminEmail: 'anq.beed@gmail.com',
-    adminPassword: 'password',
   },
 };
 
@@ -231,15 +229,22 @@ export const ContentProvider = ({ children }: { children: ReactNode }) => {
     try {
       const docId = SECTION_DOCS[key];
       
-      // Automatically generate Marathi translation if it's not provided
-      // and update the marathi field in the document
-      const marathiTranslation = await translateObjectToMarathi(data);
-      const updatedData = {
-        ...data,
-        marathi: marathiTranslation
-      };
-
-      await setDoc(doc(db, 'content', docId), updatedData);
+      // 1. First save the English data immediately so the UI reflects changes instantly
+      await setDoc(doc(db, 'content', docId), data);
+      
+      // 2. Then perform the translation in the background if possible
+      // This won't block the initial save, so the user doesn't wait
+      try {
+        const marathiTranslation = await translateObjectToMarathi(data);
+        const updatedData = {
+          ...data,
+          marathi: marathiTranslation
+        };
+        // Update the document again with the translation
+        await setDoc(doc(db, 'content', docId), updatedData);
+      } catch (transError) {
+        console.error("Background translation failed, but English content was saved:", transError);
+      }
     } catch (e) {
       console.error(`Error updating node "${key}":`, e);
     }

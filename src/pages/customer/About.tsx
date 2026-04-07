@@ -16,14 +16,18 @@ const About = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-gradient-hero pt-44 pb-20">
+      <section className="bg-gradient-hero pt-32 pb-16 md:pt-44 md:pb-20">
         <div className="container-legal text-center">
           <div className="max-w-4xl mx-auto">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block animate-in fade-in slide-in-from-bottom-3 duration-700">
               {badge}
             </span>
             <h1 className="heading-display text-cream mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-              {heroTitle}
+              {heroTitle.split('\n').map((line, i) => (
+                <span key={i} className={`block ${!isEn && i > 0 ? 'mt-3 sm:mt-4' : ''} ${!isEn ? 'py-1' : ''}`}>
+                  {line}
+                </span>
+              ))}
             </h1>
             <p className="text-cream/80 text-lg leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-700 delay-300">
               {heroSubtitle}
@@ -42,7 +46,7 @@ const About = () => {
                 <div className="text-center mb-6">
                   <div className="w-32 h-32 mx-auto bg-navy rounded-full overflow-hidden mb-4 border-2 border-accent/20">
                     <img 
-                      src="/Adv Homepage.jpeg" 
+                      src="/advocate.png" 
                       alt={t('about.advocateName')}
                       className="w-full h-full object-cover"
                     />

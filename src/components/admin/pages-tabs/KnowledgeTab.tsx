@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
@@ -8,11 +8,14 @@ import { SectionCard, Field } from '../shared/AdminSectionComponents';
 export const KnowledgeTab = () => {
   const { content, updateKnowledge } = useContent();
   const { toast } = useToast();
-  const [badge, setBadge] = useState(content.knowledge.badge);
-  const [heroTitle, setHeroTitle] = useState(content.knowledge.heroTitle);
-  const [heroSubtitle, setHeroSubtitle] = useState(content.knowledge.heroSubtitle);
   const [articles, setArticles] = useState(content.knowledge.articles);
   const [faqs, setFaqs]         = useState(content.knowledge.faqs);
+
+  // Sync local state when content loads from Firestore
+  useEffect(() => {
+    setArticles(content.knowledge.articles);
+    setFaqs(content.knowledge.faqs);
+  }, [content.knowledge.articles, content.knowledge.faqs]);
 
   const categories = ['Criminal Law', 'Civil Litigation', 'Family Law', 'Property Law', 'Corporate Law', 'Consumer Law'];
 
@@ -25,29 +28,13 @@ export const KnowledgeTab = () => {
   const removeFaq = (i: number) => setFaqs(faqs.filter((_, idx) => idx !== i));
 
   const save = () => { 
-    updateKnowledge({ badge, heroTitle, heroSubtitle, articles, faqs }); 
+    updateKnowledge({ ...content.knowledge, articles, faqs }); 
     toast({ title: 'Knowledge Base Saved', description: 'Changes are now live on /knowledge.' }); 
   };
 
   return (
     <div className="space-y-6">
-      <SectionCard
-        title="Page Header — Knowledge Base"
-        page="Knowledge Base Page ( /knowledge ) — top section"
-        hint="This section controls the main banner at the top of the Knowledge Base page."
-      >
-        <div className="grid sm:grid-cols-1 gap-4">
-          <Field label="Header Badge (small text at the very top)">
-            <input className="form-input" value={badge} onChange={e => setBadge(e.target.value)} />
-          </Field>
-          <Field label="Main Hero Title (the primary H1 heading)">
-            <input className="form-input" value={heroTitle} onChange={e => setHeroTitle(e.target.value)} />
-          </Field>
-          <Field label="Hero Subtitle (the text paragraph under the title)">
-            <textarea className="form-input min-h-[80px]" value={heroSubtitle} onChange={e => setHeroSubtitle(e.target.value)} />
-          </Field>
-        </div>
-      </SectionCard>
+
       <SectionCard
         title="Articles — Knowledge Base"
         page="Knowledge Base Page ( /knowledge )"

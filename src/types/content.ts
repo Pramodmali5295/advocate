@@ -133,8 +133,6 @@ export interface SettingsContent {
   address: string;
   inquiryFee: number;
   currency: string;
-  adminEmail?: string;
-  adminPassword?: string;
 }
 
 export interface SiteContent {

@@ -113,49 +113,7 @@ const AdminSettings = () => {
         </div>
       </div>
 
-      {/* Account Security */}
-      <div className="admin-card">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Lock className="w-5 h-5 text-blue-600" />
-          </div>
-          <div>
-            <h2 className="font-display text-lg font-semibold text-foreground">
-              Account Security
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Manage your private admin login credentials
-            </p>
-          </div>
-        </div>
 
-        <div className="grid sm:grid-cols-2 gap-6">
-          <div>
-            <label className="form-label">Login Username (Email)</label>
-            <input
-              type="text"
-              value={settings.adminEmail || settings.email}
-              onChange={(e) => setSettings({ ...settings, adminEmail: e.target.value })}
-              className="form-input"
-            />
-             <p className="text-[10px] text-muted-foreground mt-1 uppercase font-bold">
-              Private login username only
-            </p>
-          </div>
-          <div>
-            <label className="form-label">Login Password</label>
-            <input
-              type="text"
-              value={settings.adminPassword || settings.phone}
-              onChange={(e) => setSettings({ ...settings, adminPassword: e.target.value })}
-              className="form-input font-mono"
-            />
-            <p className="text-xs text-muted-foreground mt-1 text-[10px] uppercase font-bold">
-              Private login password only
-            </p>
-          </div>
-        </div>
-      </div>
 
       {/* Payment Settings */}
       <div className="admin-card">
@@ -195,7 +153,6 @@ const AdminSettings = () => {
               className="form-input"
             >
               <option value="INR">Indian Rupee (₹)</option>
-              <option value="USD">US Dollar ($)</option>
             </select>
           </div>
         </div>

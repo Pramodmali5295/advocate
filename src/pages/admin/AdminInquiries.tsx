@@ -8,12 +8,13 @@ import {
   CheckCircle, 
   AlertCircle,
   ChevronDown,
-  X
+  X,
+  Trash2
 } from 'lucide-react';
 
 import { useContent } from '@/context/ContentContext';
 import { db } from '@/lib/firebase';
-import { collection, query, orderBy, onSnapshot, doc, updateDoc } from 'firebase/firestore';
+import { collection, query, orderBy, onSnapshot, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { Inquiry } from '@/types/content';
 
@@ -53,6 +54,16 @@ const AdminInquiries = () => {
     }
   };
 
+
+  const deleteInquiry = async (id: string) => {
+    if (confirm('Are you sure you want to delete this consultation?')) {
+      try {
+        await deleteDoc(doc(db, 'inquiries', id));
+      } catch (e) {
+        console.error("Error deleting inquiry:", e);
+      }
+    }
+  };
 
   const statuses = ['All', 'pending', 'responded', 'closed'];
 
@@ -135,21 +146,21 @@ const AdminInquiries = () => {
             <tbody>
               {filteredInquiries.map((inquiry, index) => (
                 <tr key={inquiry.id} className="table-row">
-                  <td className="py-4 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4 whitespace-nowrap">
                     <span className="font-medium text-sm text-muted-foreground">
                       {inquiries.findIndex(i => i.id === inquiry.id) + 1}
                     </span>
                   </td>
-                  <td className="py-4 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4 whitespace-nowrap">
                     <div>
                       <span className="font-medium text-foreground block">{inquiry.fullName}</span>
                       <span className="text-sm text-muted-foreground">{inquiry.email}</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4 whitespace-nowrap">
                     <span className="text-muted-foreground">{inquiry.category}</span>
                   </td>
-                  <td className="py-4 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4 whitespace-nowrap">
                     <span className="text-muted-foreground">
                       {inquiry.createdAt ? (inquiry.createdAt as any).toDate().toLocaleDateString('en-IN', {
                         day: 'numeric',
@@ -216,9 +227,6 @@ const AdminInquiries = () => {
             <div className="p-6 space-y-6">
               {/* Status & Category */}
               <div className="flex items-center gap-4">
-                <span className={statusConfig[selectedInquiry.status as keyof typeof statusConfig].className}>
-                   {statusConfig[selectedInquiry.status as keyof typeof statusConfig]?.label || selectedInquiry.status}
-                </span>
                 <span className="px-3 py-1 bg-muted text-muted-foreground rounded-full text-xs font-medium">
                   {selectedInquiry.category}
                 </span>
@@ -273,18 +281,15 @@ const AdminInquiries = () => {
 
               {/* Actions */}
               <div className="flex gap-4">
-                <Button 
-                  className="btn-gold flex-1"
-                  onClick={() => {
-                    const next = selectedInquiry.status === 'pending' ? 'responded' : 'closed';
-                    updateStatus(selectedInquiry.id, next);
-                    setSelectedInquiry(null);
-                  }}
-                >
-                  Mark as {selectedInquiry.status === 'pending' ? 'Responded' : 'Closed'}
-                </Button>
-                <Button variant="outline" className="flex-1" onClick={() => setSelectedInquiry(null)}>
+                <Button variant="secondary" className="flex-1 bg-muted hover:bg-muted/80 text-foreground" onClick={() => setSelectedInquiry(null)}>
                   Close
+                </Button>
+                <Button variant="destructive" className="flex-1 bg-red-500 hover:bg-red-600 text-white border-0" onClick={() => {
+                   deleteInquiry(selectedInquiry.id);
+                   setSelectedInquiry(null);
+                }}>
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  Delete
                 </Button>
               </div>
             </div>

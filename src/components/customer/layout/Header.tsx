@@ -78,13 +78,13 @@ export const Header = () => {
               </div>
               <div className="flex flex-col">
                 <span className={cn(
-                  'font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight transition-colors leading-none',
+                  'font-display text-base sm:text-xl md:text-2xl font-bold tracking-tight transition-colors leading-none',
                   (isScrolled || isMobileMenuOpen) ? 'text-foreground' : 'text-white'
                 )}>
                   {settings.firmName.split(' ')[0]}
                 </span>
                 <span className={cn(
-                  'text-[10px] sm:text-xs tracking-[0.2em] uppercase transition-colors mt-0.5',
+                  'text-[8px] sm:text-xs tracking-[0.2em] uppercase transition-colors mt-0.5',
                   (isScrolled || isMobileMenuOpen) ? 'text-muted-foreground' : 'text-white/70'
                 )}>
                   {settings.firmName.split(' ').slice(1).join(' ')}
@@ -177,7 +177,7 @@ export const Header = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold-light/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
         
-        <div className="container-legal relative flex flex-col pt-20 pb-8 overflow-y-auto no-scrollbar h-full">
+        <div className="container-legal relative flex flex-col pt-16 md:pt-20 pb-8 overflow-y-auto no-scrollbar h-full">
           <nav className="py-2">
             <div className="flex flex-col gap-2">
               {navLinks.map((link, index) => (
@@ -186,7 +186,7 @@ export const Header = () => {
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    'group flex items-center justify-between py-4 text-2xl md:text-3xl font-display font-semibold transition-all duration-300',
+                    'group flex items-center justify-between py-3 md:py-4 text-xl sm:text-2xl md:text-3xl font-display font-semibold transition-all duration-300',
                     isActive(link.path) ? 'text-accent pl-2' : 'text-foreground hover:text-accent pl-0 hover:pl-2',
                     isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                   )}

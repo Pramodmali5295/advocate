@@ -12,7 +12,6 @@ import Knowledge from "./pages/customer/Knowledge";
 import Testimonials from "./pages/customer/Testimonials";
 import { AdminLayout } from "./components/admin/layout/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminInquiries from "./pages/admin/AdminInquiries";
 import AdminClients from "./pages/admin/AdminClients";
 import AdminServices from "./pages/admin/AdminServices";
 import AdminPayments from "./pages/admin/AdminPayments";
@@ -25,7 +24,6 @@ import { ContentProvider } from "./context/ContentContext";
 import { AuthProvider } from "./context/AuthContext";
 import { LanguageProvider } from "./context/LanguageContext";
 import { ProtectedRoute } from "./components/admin/ProtectedRoute";
-import Login from "./pages/admin/Login";
 import InitialLanguagePopup from "./components/ui/InitialLanguagePopup";
 
 const queryClient = new QueryClient();
@@ -52,14 +50,10 @@ const App = () => (
               <Route path="/knowledge" element={<Knowledge />} />
               <Route path="/testimonials" element={<Testimonials />} />
               
-              {/* Admin Login */}
-              <Route path="/admin/login" element={<Login />} />
-
               {/* Protected Admin Routes */}
               <Route element={<ProtectedRoute />}>
                 <Route path="/admin" element={<AdminLayout />}>
                   <Route index element={<AdminDashboard />} />
-                  <Route path="inquiries" element={<AdminInquiries />} />
                   <Route path="services" element={<AdminServices />} />
                   <Route path="testimonials" element={<AdminTestimonials />} />
                   <Route path="pages" element={<AdminPages />} />
@@ -73,8 +67,8 @@ const App = () => (
         </TooltipProvider>
       </AuthProvider>
     </ContentProvider>
-    </LanguageProvider>
-  </QueryClientProvider>
+  </LanguageProvider>
+</QueryClientProvider>
 );
 
 export default App;

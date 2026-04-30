@@ -27,12 +27,16 @@ export const CTASection = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
               {/* Content */}
               <div>
-                <h2 className="heading-section text-cream mb-6">{isEn ? (cta.title || t('cta.title')) : t('cta.title')}</h2>
-                <p className="text-cream/80 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">{isEn ? (cta.subtitle || t('cta.subtitle')) : t('cta.subtitle')}</p>
+                <h2 className="heading-section text-cream mb-6">
+                  {isEn ? (cta.title || t('cta.title')) : (cta.marathi?.title || t('cta.title'))}
+                </h2>
+                <p className="text-cream/80 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  {isEn ? (cta.subtitle || t('cta.subtitle')) : (cta.marathi?.subtitle || t('cta.subtitle'))}
+                </p>
                 <div className="flex justify-center lg:justify-start">
                   <Button asChild className="bg-accent text-white hover:bg-gold-dark shadow-gold transition-all duration-300 font-bold hover:scale-105 text-lg md:text-xl px-10 py-7 h-auto w-full sm:w-auto shadow-2xl group">
                     <Link to="/inquiry">
-                      {t('cta.buttonText')}
+                      {isEn ? (cta.buttonText || t('cta.buttonText')) : (cta.marathi?.buttonText || t('cta.buttonText'))}
                       <ArrowRight className="ml-2 w-6 h-6 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
@@ -44,12 +48,21 @@ export const CTASection = () => {
                 {cta.features.map((f, i) => {
                   const Icon = iconMap[f.icon] || Shield;
                   const featureKey = i === 0 ? 'response24h' : i === 1 ? 'confidential' : 'expertGuidance';
+                  
+                  const fTitle = isEn 
+                    ? (f.title || t(`cta.features.${featureKey}.title`)) 
+                    : (cta.marathi?.features?.[i]?.title || t(`cta.features.${featureKey}.title`));
+                  
+                  const fDesc = isEn 
+                    ? (f.description || t(`cta.features.${featureKey}.description`)) 
+                    : (cta.marathi?.features?.[i]?.description || t(`cta.features.${featureKey}.description`));
+
                   return (
                     <FeatureCard 
                       key={i} 
                       icon={<Icon className="w-6 h-6" />} 
-                      title={isEn ? (f.title || t(`cta.features.${featureKey}.title`)) : t(`cta.features.${featureKey}.title`)} 
-                      description={isEn ? (f.description || t(`cta.features.${featureKey}.description`)) : t(`cta.features.${featureKey}.description`)} 
+                      title={fTitle} 
+                      description={fDesc} 
                     />
                   );
                 })}

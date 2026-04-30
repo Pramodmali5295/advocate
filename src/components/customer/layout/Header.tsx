@@ -62,8 +62,8 @@ export const Header = () => {
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        (isScrolled || isMobileMenuOpen)
+        'fixed top-0 left-0 right-0 z-[120] transition-all duration-300',
+        (isScrolled || (location.pathname !== '/' && !isMobileMenuOpen))
           ? 'bg-background/95 backdrop-blur-md shadow-md py-4 md:py-5'
           : 'bg-transparent py-6 md:py-10'
       )}
@@ -79,13 +79,13 @@ export const Header = () => {
               <div className="flex flex-col">
                 <span className={cn(
                   'font-display text-base sm:text-xl md:text-2xl font-bold tracking-tight transition-colors leading-none',
-                  (isScrolled || isMobileMenuOpen) ? 'text-foreground' : 'text-white'
+                  isMobileMenuOpen ? 'text-cream' : (isScrolled || location.pathname !== '/') ? 'text-foreground' : 'text-white'
                 )}>
                   {settings.firmName.split(' ')[0]}
                 </span>
                 <span className={cn(
                   'text-[8px] sm:text-xs tracking-[0.2em] uppercase transition-colors mt-0.5',
-                  (isScrolled || isMobileMenuOpen) ? 'text-muted-foreground' : 'text-white/70'
+                  isMobileMenuOpen ? 'text-cream/60' : (isScrolled || location.pathname !== '/') ? 'text-muted-foreground' : 'text-white/70'
                 )}>
                   {settings.firmName.split(' ').slice(1).join(' ')}
                 </span>
@@ -105,7 +105,7 @@ export const Header = () => {
                     'text-base font-semibold transition-colors relative whitespace-nowrap',
                     isActive(link.path)
                       ? 'text-accent'
-                      : (isScrolled || isMobileMenuOpen)
+                      : (isScrolled || location.pathname !== '/')
                         ? 'text-foreground hover:text-accent'
                         : 'text-white/90 hover:text-white',
                     'after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:bg-accent after:transition-all after:duration-300',
@@ -123,7 +123,7 @@ export const Header = () => {
               <div
                 className={cn(
                   'hidden xl:flex items-center gap-2 text-sm font-medium mr-2',
-                  (isScrolled || isMobileMenuOpen) ? 'text-foreground' : 'text-white'
+                  (isScrolled || location.pathname !== '/') ? 'text-foreground' : 'text-white'
                 )}
               >
                 <Phone className="w-4 h-4" />
@@ -150,17 +150,17 @@ export const Header = () => {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={cn(
-                  'lg:hidden flex items-center justify-center p-2 transition-all duration-300 z-[110] rounded-xl ml-1',
-                  (isScrolled || isMobileMenuOpen)
-                    ? 'text-foreground hover:bg-accent/10' 
-                    : 'text-white hover:bg-white/10'
+                  'lg:hidden flex items-center justify-center p-2.5 transition-all duration-300 z-[110] rounded-xl ml-1 shadow-sm',
+                  isMobileMenuOpen
+                    ? 'bg-accent text-white hover:bg-gold-dark'
+                    : 'bg-accent text-white hover:bg-gold-dark shadow-gold'
                 )}
                 aria-label="Toggle Menu"
               >
                 {isMobileMenuOpen ? (
-                  <X className="w-7 h-7" />
+                  <X className="w-6 h-6" />
                 ) : (
-                  <Menu className="w-7 h-7" />
+                  <Menu className="w-6 h-6" />
                 )}
               </button>
             </div>
@@ -170,8 +170,8 @@ export const Header = () => {
 
       {/* Mobile Menu Overlay - Drawer Style */}
       <div className={cn(
-        'lg:hidden fixed left-0 right-0 top-0 bg-background transition-all duration-500 ease-in-out z-[100] overflow-hidden',
-        isMobileMenuOpen ? 'h-screen opacity-100' : 'h-0 opacity-0 pointer-events-none'
+        'lg:hidden fixed inset-0 bg-navy transition-all duration-500 ease-in-out z-[100] overflow-hidden',
+        isMobileMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 pointer-events-none translate-x-full'
       )}>
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -187,7 +187,7 @@ export const Header = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     'group flex items-center justify-between py-3 md:py-4 text-xl sm:text-2xl md:text-3xl font-display font-semibold transition-all duration-300',
-                    isActive(link.path) ? 'text-accent pl-2' : 'text-foreground hover:text-accent pl-0 hover:pl-2',
+                    isActive(link.path) ? 'text-accent pl-2' : 'text-cream hover:text-accent pl-0 hover:pl-2',
                     isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                   )}
                   style={{ transitionDelay: `${index * 100}ms` }}
@@ -207,10 +207,10 @@ export const Header = () => {
             isMobileMenuOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
           )}>
             <div>
-              <div className="flex items-center justify-between p-5 rounded-xl bg-muted/50">
+              <div className="flex items-center justify-between p-5 rounded-xl bg-white/5 border border-white/10">
                 <div className="flex flex-col">
-                  <div className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Language / भाषा</div>
-                  <div className="text-xs font-medium text-foreground">{isMarathi ? 'मराठी' : 'English'}</div>
+                  <div className="text-[10px] uppercase tracking-widest text-cream/50 font-semibold">Language / भाषा</div>
+                  <div className="text-xs font-medium text-cream">{isMarathi ? 'मराठी' : 'English'}</div>
                 </div>
                 <LanguageToggle />
               </div>

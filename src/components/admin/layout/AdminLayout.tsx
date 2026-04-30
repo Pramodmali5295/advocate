@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { Link, useLocation, Outlet } from 'react-router-dom';
 import { 
   LayoutDashboard, 
-  FileText, 
   Briefcase, 
-  MessageSquare,
-  CreditCard, 
   Settings,
   Scale,
   Menu,
@@ -23,7 +20,6 @@ import { useToast } from '@/hooks/use-toast';
 const sidebarLinks = [
   { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
   { name: 'Services', path: '/admin/services', icon: Briefcase },
-  { name: 'Testimonials', path: '/admin/testimonials', icon: MessageSquare },
   { name: 'Pages', path: '/admin/pages', icon: LayoutPanelLeft },
   { name: 'Settings', path: '/admin/settings', icon: Settings },
 ];

@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Save, Plus, Trash2 } from 'lucide-react';
+import { Save, Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
 import { SectionCard, Field } from '../shared/AdminSectionComponents';
 
 export const AboutTab = () => {
   const { content, updateAboutPage } = useContent();
   const { toast } = useToast();
   const [data, setData] = useState(content.aboutPage);
+  const [expandedTimeline, setExpandedTimeline] = useState<number | null>(null);
   
   // Sync local state when content loads from Firestore
   useEffect(() => {
@@ -23,7 +24,11 @@ export const AboutTab = () => {
   const updateTimeline = (i: number, field: string, value: string) => {
     const arr = [...data.timeline]; arr[i] = { ...arr[i], [field]: value }; setData({ ...data, timeline: arr });
   };
-  const addTimeline    = () => setData({ ...data, timeline: [...data.timeline, { year: '', title: '', description: '' }] });
+  const addTimeline    = () => {
+    const newTimeline = [...data.timeline, { year: '', title: '', description: '' }];
+    setData({ ...data, timeline: newTimeline });
+    setExpandedTimeline(newTimeline.length - 1);
+  };
   const removeTimeline = (i: number) => setData({ ...data, timeline: data.timeline.filter((_, idx) => idx !== i) });
 
   const updateCert = (i: number, value: string) => { const arr = [...data.certifications]; arr[i] = value; setData({ ...data, certifications: arr }); };
@@ -83,7 +88,7 @@ export const AboutTab = () => {
             </div>
           ))}
         </div>
-        <Button variant="outline" onClick={addCert} className="w-full"><Plus className="w-4 h-4 mr-2" />Add Certification / Membership</Button>
+        <Button variant="default" onClick={addCert} className="w-full btn-gold"><Plus className="w-4 h-4 mr-2" />Add Certification / Membership</Button>
       </SectionCard>
 
       <SectionCard
@@ -93,20 +98,49 @@ export const AboutTab = () => {
       >
         <div className="space-y-3">
           {data.timeline.map((t, i) => (
-            <div key={i} className="border border-border rounded-lg p-3 space-y-2 bg-muted/20">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Timeline Entry {i + 1}</span>
-                <button onClick={() => removeTimeline(i)} className="p-1 text-destructive hover:bg-destructive/10 rounded-lg"><Trash2 className="w-4 h-4" /></button>
+            <div key={i} className="border border-border rounded-lg bg-card overflow-hidden transition-all duration-200 shadow-sm">
+              <div 
+                className="flex items-center justify-between p-4 cursor-pointer hover:bg-muted/30"
+                onClick={() => setExpandedTimeline(expandedTimeline === i ? null : i)}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-bold text-accent w-12">{t.year || 'YEAR'}</span>
+                  <span className="font-semibold text-sm text-foreground">
+                    {t.title || 'Untitled Milestone'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button 
+                    onClick={(e) => { e.stopPropagation(); removeTimeline(i); }} 
+                    className="text-destructive hover:bg-destructive/10 p-1.5 rounded-lg transition-colors"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                  {expandedTimeline === i ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
+                </div>
               </div>
-              <div className="flex gap-2">
-                <input className="form-input text-sm w-24" placeholder="Year, e.g. 2003" value={t.year} onChange={e => updateTimeline(i, 'year', e.target.value)} />
-                <input className="form-input text-sm flex-1" placeholder="Title, e.g. Enrolled with Bar Council" value={t.title} onChange={e => updateTimeline(i, 'title', e.target.value)} />
-              </div>
-              <input className="form-input text-sm" placeholder="Short description for this milestone" value={t.description} onChange={e => updateTimeline(i, 'description', e.target.value)} />
+
+              {expandedTimeline === i && (
+                <div className="p-4 pt-0 space-y-4 border-t border-border/50 animate-in fade-in slide-in-from-top-1 duration-200">
+                  <div className="grid sm:grid-cols-4 gap-3">
+                    <Field label="Year">
+                      <input className="form-input" placeholder="e.g. 2003" value={t.year} onChange={e => updateTimeline(i, 'year', e.target.value)} />
+                    </Field>
+                    <div className="sm:col-span-3">
+                      <Field label="Milestone Title">
+                        <input className="form-input" placeholder="e.g. Enrolled with Bar Council" value={t.title} onChange={e => updateTimeline(i, 'title', e.target.value)} />
+                      </Field>
+                    </div>
+                  </div>
+                  <Field label="Description">
+                    <textarea className="form-input min-h-[60px]" placeholder="Short description for this milestone" value={t.description} onChange={e => updateTimeline(i, 'description', e.target.value)} />
+                  </Field>
+                </div>
+              )}
             </div>
           ))}
         </div>
-        <Button variant="outline" onClick={addTimeline} className="w-full"><Plus className="w-4 h-4 mr-2" />Add Timeline Entry</Button>
+        <Button variant="default" onClick={addTimeline} className="w-full btn-gold"><Plus className="w-4 h-4 mr-2" />Add Timeline Entry</Button>
       </SectionCard>
 
 

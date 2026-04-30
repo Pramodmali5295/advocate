@@ -131,7 +131,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-x-hidden;
     font-family: "Inter", sans-serif;
   }
 
@@ -193,12 +193,30 @@
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight lg:leading-[1.15];
   }
 
+  @media (max-width: 640px) {
+    .heading-display {
+      @apply text-3xl;
+    }
+    .heading-section {
+      @apply text-2xl;
+    }
+    .heading-card {
+      @apply text-lg;
+    }
+  }
+
   @media (max-width: 480px) {
     .heading-display {
       @apply text-2xl;
     }
     .heading-section {
       @apply text-xl;
+    }
+    .heading-card {
+      @apply text-base;
+    }
+    .container-legal {
+      @apply px-4;
     }
   }
 
@@ -310,6 +328,23 @@
 
   .table-row {
     @apply border-b border-border hover:bg-muted/50 transition-colors;
+  }
+
+  /* Responsive Table Utilities */
+  .table-responsive {
+    @apply w-full border-collapse;
+  }
+
+  @media (max-width: 768px) {
+    .table-responsive thead {
+      @apply hidden;
+    }
+    .table-responsive tr {
+      @apply block mb-4 border border-border rounded-xl bg-card p-4 shadow-sm;
+    }
+    .table-responsive td {
+      @apply block text-right py-2 px-0 border-0 flex items-center justify-between gap-4 before:content-[attr(data-label)] before:font-semibold before:text-muted-foreground before:text-xs before:uppercase before:tracking-wider;
+    }
   }
 
   /* Status Badges */

@@ -3,8 +3,7 @@ import { useContent } from '@/context/ContentContext';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import {
-  Home, Info, Briefcase, MessageSquare, BookOpen, Phone,
-  HelpCircle
+  Home, Info, Briefcase, MessageSquare, BookOpen, Phone
 } from 'lucide-react';
 
 import { HomeTab } from '@/components/admin/pages-tabs/HomeTab';
@@ -13,7 +12,6 @@ import { PracticeAreasTab } from '@/components/admin/pages-tabs/PracticeAreasTab
 import { TestimonialsTab } from '@/components/admin/pages-tabs/TestimonialsTab';
 import { KnowledgeTab } from '@/components/admin/pages-tabs/KnowledgeTab';
 import { ContactTab } from '@/components/admin/pages-tabs/ContactTab';
-import { InquiryTab } from '@/components/admin/pages-tabs/InquiryTab';
 
 const tabs = [
   { id: 'home',         label: 'Home Page',      icon: Home,         route: '/' },
@@ -22,7 +20,6 @@ const tabs = [
   { id: 'testimonials', label: 'Testimonials',    icon: MessageSquare,route: '/ & /testimonials' },
   { id: 'knowledge',    label: 'Knowledge Base',  icon: BookOpen,     route: '/knowledge' },
   { id: 'contact',      label: 'Contact Page',    icon: Phone,        route: '/contact' },
-  { id: 'inquiry',      label: 'Inquiry Page',    icon: HelpCircle,   route: '/inquiry' },
 ];
 
 const AdminPages = () => {
@@ -45,22 +42,19 @@ const AdminPages = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex overflow-x-auto no-scrollbar gap-2 border-b border-border pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 whitespace-nowrap items-center">
+      <div className="grid grid-cols-2 sm:flex sm:w-full gap-2 border-b border-border pb-4">
         {tabs.map(tab => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all shrink-0 ${
+            className={`flex items-center justify-center gap-2 px-3 py-3 rounded-lg text-xs sm:text-sm font-bold transition-all sm:flex-1 ${
               activeTab === tab.id
-                ? 'bg-accent text-accent-foreground shadow-sm'
-                : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                ? 'bg-accent text-accent-foreground shadow-gold'
+                : 'bg-background border border-border text-muted-foreground hover:border-accent hover:text-accent hover:bg-accent/5'
             }`}
           >
-            <tab.icon className="w-4 h-4 shrink-0" />
+            <tab.icon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${activeTab === tab.id ? 'text-accent-foreground' : 'text-muted-foreground'}`} />
             <span>{tab.label}</span>
-            <span className={`text-[10px] hidden sm:inline ${activeTab === tab.id ? 'text-accent-foreground/70' : 'text-muted-foreground/60'}`}>
-              {tab.route}
-            </span>
           </button>
         ))}
       </div>
@@ -73,7 +67,6 @@ const AdminPages = () => {
         {activeTab === 'testimonials' && <TestimonialsTab />}
         {activeTab === 'knowledge'    && <KnowledgeTab />}
         {activeTab === 'contact'      && <ContactTab />}
-        {activeTab === 'inquiry'      && <InquiryTab />}
       </div>
     </div>
   );

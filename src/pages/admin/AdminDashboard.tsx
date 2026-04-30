@@ -166,39 +166,39 @@ const AdminDashboard = () => {
 
 
           <div className="overflow-auto max-h-[450px]">
-            <table className="w-full min-w-[700px] border-separate border-spacing-0">
+            <table className="table-responsive">
               <thead className="sticky top-0 z-20 bg-card">
                 <tr className="table-header">
-                  <th className="text-left py-3 px-4 rounded-tl-lg whitespace-nowrap bg-muted/50 border-b border-border">Sr No</th>
-                  <th className="text-left py-3 px-4 whitespace-nowrap bg-muted/50 border-b border-border">Client Name</th>
-                  <th className="text-left py-3 px-4 whitespace-nowrap bg-muted/50 border-b border-border">Contact No</th>
-                  <th className="text-left py-3 px-4 whitespace-nowrap bg-muted/50 border-b border-border">Category</th>
-                  <th className="text-left py-3 px-4 whitespace-nowrap bg-muted/50 border-b border-border">Amount</th>
-                  <th className="text-right py-3 px-4 rounded-tr-lg whitespace-nowrap bg-muted/50 border-b border-border">Actions</th>
+                  <th className="text-left py-3 px-4 rounded-tl-lg bg-muted/50 border-b border-border">Sr No</th>
+                  <th className="text-left py-3 px-4 bg-muted/50 border-b border-border">Client Name</th>
+                  <th className="text-left py-3 px-4 bg-muted/50 border-b border-border">Contact No</th>
+                  <th className="text-left py-3 px-4 bg-muted/50 border-b border-border">Category</th>
+                  <th className="text-left py-3 px-4 bg-muted/50 border-b border-border">Amount</th>
+                  <th className="text-right py-3 px-4 rounded-tr-lg bg-muted/50 border-b border-border">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {displayInquiries.map((inquiry, index) => {
                   return (
                     <tr key={inquiry.id} className="table-row">
-                      <td className="py-2 px-4 whitespace-nowrap">
+                      <td className="py-2 px-4" data-label="Sr No">
                         <span className="font-medium text-sm text-muted-foreground">
                           {inquiries.findIndex(i => i.id === inquiry.id) + 1}
                         </span>
                       </td>
-                      <td className="py-2 px-4 whitespace-nowrap">
+                      <td className="py-2 px-4" data-label="Client">
                         <span className="font-medium text-foreground">{inquiry.fullName}</span>
                       </td>
-                      <td className="py-2 px-4 whitespace-nowrap">
+                      <td className="py-2 px-4" data-label="Contact">
                         <span className="text-muted-foreground">{inquiry.mobile}</span>
                       </td>
-                      <td className="py-2 px-4 whitespace-nowrap">
+                      <td className="py-2 px-4" data-label="Category">
                         <span className="text-muted-foreground">{inquiry.category}</span>
                       </td>
-                      <td className="py-2 px-4 whitespace-nowrap">
+                      <td className="py-2 px-4" data-label="Amount">
                         <span className="font-medium text-foreground">₹{inquiry.amount}</span>
                       </td>
-                      <td className="py-4 px-4 whitespace-nowrap text-right">
+                      <td className="py-4 px-4 text-right" data-label="Actions">
                         <div className="flex items-center justify-end gap-2">
                           <button
                             onClick={() => setSelectedInquiry(inquiry)}

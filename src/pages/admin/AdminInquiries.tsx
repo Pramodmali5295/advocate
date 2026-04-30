@@ -129,38 +129,38 @@ const AdminInquiries = () => {
       </div>
 
       {/* Consultations Table */}
-      <div className="admin-card !p-0 overflow-hidden">
+      <div className="admin-card !p-0 overflow-hidden bg-transparent sm:bg-card border-0 sm:border border-border">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[1000px]">
+          <table className="table-responsive">
             <thead>
               <tr className="table-header">
-                <th className="text-left py-3 px-4 rounded-l-lg whitespace-nowrap">Sr No</th>
-                <th className="text-left py-3 px-4 whitespace-nowrap">Client</th>
-                <th className="text-left py-3 px-4 whitespace-nowrap">Category</th>
-                <th className="text-left py-3 px-4 whitespace-nowrap">Date</th>
-                <th className="text-left py-3 px-4 whitespace-nowrap">Status</th>
-                <th className="text-right py-3 px-4 whitespace-nowrap">Amount</th>
-                <th className="text-right py-3 px-4 rounded-r-lg whitespace-nowrap">Actions</th>
+                <th className="text-left py-3 px-4 rounded-l-lg">Sr No</th>
+                <th className="text-left py-3 px-4">Client</th>
+                <th className="text-left py-3 px-4">Category</th>
+                <th className="text-left py-3 px-4">Date</th>
+                <th className="text-left py-3 px-4">Status</th>
+                <th className="text-right py-3 px-4">Amount</th>
+                <th className="text-right py-3 px-4 rounded-r-lg">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredInquiries.map((inquiry, index) => (
                 <tr key={inquiry.id} className="table-row">
-                  <td className="py-2 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4" data-label="Sr No">
                     <span className="font-medium text-sm text-muted-foreground">
                       {inquiries.findIndex(i => i.id === inquiry.id) + 1}
                     </span>
                   </td>
-                  <td className="py-2 px-4 whitespace-nowrap">
-                    <div>
+                  <td className="py-2 px-4" data-label="Client">
+                    <div className="text-right sm:text-left">
                       <span className="font-medium text-foreground block">{inquiry.fullName}</span>
                       <span className="text-sm text-muted-foreground">{inquiry.email}</span>
                     </div>
                   </td>
-                  <td className="py-2 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4" data-label="Category">
                     <span className="text-muted-foreground">{inquiry.category}</span>
                   </td>
-                  <td className="py-2 px-4 whitespace-nowrap">
+                  <td className="py-2 px-4" data-label="Date">
                     <span className="text-muted-foreground">
                       {inquiry.createdAt ? (inquiry.createdAt as any).toDate().toLocaleDateString('en-IN', {
                         day: 'numeric',
@@ -169,20 +169,20 @@ const AdminInquiries = () => {
                       }) : 'Pending...'}
                     </span>
                   </td>
-                  <td className="py-4 px-4 whitespace-nowrap">
+                  <td className="py-4 px-4" data-label="Status">
                     <span className={statusConfig[inquiry.status as keyof typeof statusConfig].className}>
                       {statusConfig[inquiry.status as keyof typeof statusConfig]?.label || inquiry.status}
                     </span>
                   </td>
-                  <td className="py-4 px-4 text-right whitespace-nowrap">
+                  <td className="py-4 px-4 text-right" data-label="Amount">
                     <span className="font-medium text-foreground">₹{inquiry.amount}</span>
                   </td>
-                  <td className="py-4 px-4 text-right whitespace-nowrap">
+                  <td className="py-4 px-4 text-right" data-label="Actions">
                     <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setSelectedInquiry(inquiry)}
-                      className="text-accent hover:text-accent"
+                      className="text-accent hover:text-accent p-0 sm:p-2"
                     >
                       <Eye className="w-4 h-4 mr-1" />
                       View

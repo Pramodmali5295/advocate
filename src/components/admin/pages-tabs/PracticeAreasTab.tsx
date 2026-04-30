@@ -147,8 +147,8 @@ export const PracticeAreasTab = () => {
       ))}
 
       <Button 
-        variant="outline" 
-        className="w-full border-dashed py-6"
+        variant="default" 
+        className="w-full py-6 btn-gold"
         onClick={() => {
           const newId = `new-area-${Date.now()}`;
           setAreas([...areas, {

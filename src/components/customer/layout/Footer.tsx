@@ -125,14 +125,6 @@ export const Footer = () => {
               © {new Date().getFullYear()} {settings.firmName}. {t('footer.copyright')}
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 items-center">
-              <Link
-                to="/admin"
-                className="flex items-center gap-1.5 text-cream/30 hover:text-cream/70 text-sm transition-colors group"
-                title="Admin Login"
-              >
-                <Shield className="w-4 h-4 group-hover:text-accent transition-colors" />
-                <span>{t('footer.adminLogin')}</span>
-              </Link>
             </div>
           </div>
         </div>

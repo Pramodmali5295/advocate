@@ -130,11 +130,11 @@ const Inquiry = () => {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Form */}
             <div className="lg:col-span-2">
-              <div className="card-premium p-8">
-                <h2 className="heading-section text-foreground mb-2">
+              <div className="card-premium p-5 sm:p-8">
+                <h2 className="text-2xl sm:heading-section text-foreground mb-2">
                   {t('inquiry.formTitle')}
                 </h2>
-                <p className="text-muted-foreground mb-8">
+                <p className="text-sm sm:text-base text-muted-foreground mb-8">
                   {t('inquiry.formSubtitle')}
                 </p>
 
@@ -247,18 +247,18 @@ const Inquiry = () => {
                   <div className="pt-6 border-t border-border">
                     <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
                       <div className="text-center sm:text-left">
-                        <h3 className="font-semibold text-foreground">{t('inquiry.consultationFee')}</h3>
-                        <p className="text-sm text-muted-foreground">{t('inquiry.oneTimeFee', 'One-time consultation fee')}</p>
+                        <h3 className="font-semibold text-foreground text-sm sm:text-base">{t('inquiry.consultationFee')}</h3>
+                        <p className="text-xs sm:text-sm text-muted-foreground">{t('inquiry.oneTimeFee', 'One-time consultation fee')}</p>
                       </div>
                       <div className="text-center sm:text-right">
-                        <div className="text-3xl md:text-4xl font-bold text-accent">{currency}{fee}</div>
-                        <p className="text-sm text-muted-foreground">{t('inquiry.inclusiveTaxes', 'Inclusive of all taxes')}</p>
+                        <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-accent">{currency}{fee}</div>
+                        <p className="text-[10px] sm:text-sm text-muted-foreground">{t('inquiry.inclusiveTaxes', 'Inclusive of all taxes')}</p>
                       </div>
                     </div>
 
                     <Button 
                       type="submit" 
-                      className="btn-gold w-full py-6 md:py-8 h-auto text-lg md:text-xl text-white shadow-2xl hover:scale-105 transition-all group"
+                      className="btn-gold w-full py-5 sm:py-6 md:py-8 h-auto text-base sm:text-lg md:text-xl text-white shadow-2xl hover:scale-105 transition-all group"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
